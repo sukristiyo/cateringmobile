@@ -14,7 +14,7 @@ class _AddressPageState extends State<AddressPage> {
     TextEditingController cityController = TextEditingController();
 
     return GeneralPage(
-      title: 'Address',
+      title: 'Addresss',
       subtitle: "Make sure it’s valid",
       child: Column(
         children: [

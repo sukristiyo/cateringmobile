@@ -61,7 +61,7 @@ class _SignInPageState extends State<SignInPage> {
             width: double.infinity,
             margin: EdgeInsets.fromLTRB(defaultMargin, 26, defaultMargin, 6),
             child: Text(
-              "Email Address",
+              "Email Addresss",
               style: whiteFontStyle2,
             ),
           ),

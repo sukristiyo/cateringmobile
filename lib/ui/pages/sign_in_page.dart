@@ -39,18 +39,6 @@ class _SignInPageState extends State<SignInPage> {
     print(requestBody);
   }
 
-  // void sendRequestGetDataUserLogin() {
-  //   UserLoginModel userLoginModel = new UserLoginModel();
-  //   var requestBody = jsonEncode(userLoginModel.toJson());
-  //   UserLoginServices.getUserLogin(requestBody).then((value) {
-  //     final result = value;
-  //     if (result.success == true && result.code == 200) {
-  //     } else {}
-  //   }).catchError((error) {
-  //     String err = error.toString();
-  //   });
-  // }
-
   @override
   Widget build(BuildContext context) {
     return GeneralPage(

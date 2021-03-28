@@ -16,6 +16,9 @@ class _AddressPageState extends State<AddressPage> {
     return GeneralPage(
       title: 'Address',
       subtitle: "Make sure it’s valid",
+      onBackButtonPressed: () {
+        Navigator.pushNamed(context, '/sign_up_page');
+      },
       child: Column(
         children: [
           Container(
@@ -35,6 +38,7 @@ class _AddressPageState extends State<AddressPage> {
                 border: Border.all(color: "FFC700".toColor())),
             child: TextField(
               controller: phoneController,
+              style: TextStyle(color: Colors.white),
               decoration: InputDecoration(
                   border: InputBorder.none,
                   hintStyle: whiteFontStyle3,
@@ -58,6 +62,7 @@ class _AddressPageState extends State<AddressPage> {
                 border: Border.all(color: "FFC700".toColor())),
             child: TextField(
               controller: addressController,
+              style: TextStyle(color: Colors.white),
               decoration: InputDecoration(
                   border: InputBorder.none,
                   hintStyle: whiteFontStyle3,
@@ -81,6 +86,7 @@ class _AddressPageState extends State<AddressPage> {
                 border: Border.all(color: "FFC700".toColor())),
             child: TextField(
               controller: houseController,
+              style: TextStyle(color: Colors.white),
               decoration: InputDecoration(
                   border: InputBorder.none,
                   hintStyle: whiteFontStyle3,
@@ -104,6 +110,7 @@ class _AddressPageState extends State<AddressPage> {
                 border: Border.all(color: "FFC700".toColor())),
             child: TextField(
               controller: cityController,
+              style: TextStyle(color: Colors.white),
               decoration: InputDecoration(
                   border: InputBorder.none,
                   hintStyle: whiteFontStyle3,
@@ -116,7 +123,9 @@ class _AddressPageState extends State<AddressPage> {
             height: 45,
             padding: EdgeInsets.symmetric(horizontal: defaultMargin),
             child: RaisedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, '/sign_in_page');
+              },
               elevation: 0,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8)),

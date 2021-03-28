@@ -16,7 +16,7 @@ class _SignUpPageState extends State<SignUpPage> {
       title: 'Sign Up',
       subtitle: "Registrasi",
       onBackButtonPressed: () {
-        Get.back();
+        Navigator.pushNamed(context, '/sign_in_page');
       },
       child: Column(
         children: [
@@ -56,6 +56,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 border: Border.all(color: "FFC700".toColor())),
             child: TextField(
               controller: nameController,
+              style: TextStyle(color: Colors.white),
               decoration: InputDecoration(
                   border: InputBorder.none,
                   hintStyle: whiteFontStyle3,
@@ -79,6 +80,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 border: Border.all(color: "FFC700".toColor())),
             child: TextField(
               controller: emailController,
+              style: TextStyle(color: Colors.white),
               decoration: InputDecoration(
                   border: InputBorder.none,
                   hintStyle: whiteFontStyle3,
@@ -102,6 +104,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 border: Border.all(color: "FFC700".toColor())),
             child: TextField(
               controller: passwordController,
+              style: TextStyle(color: Colors.white),
               decoration: InputDecoration(
                   border: InputBorder.none,
                   hintStyle: whiteFontStyle3,
@@ -114,7 +117,9 @@ class _SignUpPageState extends State<SignUpPage> {
             height: 45,
             padding: EdgeInsets.symmetric(horizontal: defaultMargin),
             child: RaisedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, '/address_page');
+              },
               elevation: 0,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8)),

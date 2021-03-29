@@ -9,20 +9,48 @@ class SignInPage extends StatefulWidget {
 class _SignInPageState extends State<SignInPage> {
   var emailController = new TextEditingController();
   var passwordController = new TextEditingController();
-  final _formkey = GlobalKey<FormState>();
+  // final _formkey = GlobalKey<FormState>();
   bool isLoading = false;
   ApiResponse apiResponse;
   // TextEditingController
 
   @override
   void initState() {
-    authentication();
     super.initState();
   }
 
   void authentication() {
     UserLoginModel userLoginModel = new UserLoginModel(
         email: emailController.text, password: passwordController.text);
+
+// dialog alert
+    Future<void> _showMyDialog() async {
+      return showDialog<void>(
+        context: context,
+        barrierDismissible: false, // user must tap button!
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('AlertDialog Title'),
+            content: SingleChildScrollView(
+              child: ListBody(
+                children: <Widget>[
+                  Text('This is a demo alert dialog.'),
+                  Text('Would you like to approve of this message?'),
+                ],
+              ),
+            ),
+            actions: <Widget>[
+              TextButton(
+                child: Text('Approve'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          );
+        },
+      );
+    }
 
     var requestBody = jsonEncode(userLoginModel.toJson());
     UserLoginServices.authentication(requestBody).then((value) {
@@ -32,7 +60,9 @@ class _SignInPageState extends State<SignInPage> {
           context,
           MaterialPageRoute(builder: (context) => HomePage()),
         );
-      } else {}
+      } else {
+        _showMyDialog();
+      }
     }).catchError((error) {
       // String err = error.toString();
     });

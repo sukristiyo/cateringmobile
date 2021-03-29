@@ -14,7 +14,7 @@ class _HomePageState extends State<HomePage> {
         Container(color: Colors.white),
         SafeArea(
             child: Container(
-          color: purpleColor,
+          color: Colors.white,
         )),
         SafeArea(
             child: Center(

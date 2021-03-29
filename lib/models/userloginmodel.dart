@@ -14,16 +14,17 @@ UserLoginModel userLoginModelFromJson(String str) =>
 String userLoginModelToJson(UserLoginModel data) => json.encode(data.toJson());
 
 class UserLoginModel {
-  UserLoginModel(
-      {this.id,
-      this.name,
-      this.email,
-      this.password,
-      this.address,
-      this.houseNumber,
-      this.phoneNumber,
-      this.city,
-      this.roles});
+  UserLoginModel({
+    this.id,
+    this.name,
+    this.email,
+    this.password,
+    this.address,
+    this.houseNumber,
+    this.phoneNumber,
+    this.city,
+    this.roles,
+  });
 
   String id;
   String name;
@@ -36,15 +37,16 @@ class UserLoginModel {
   String roles;
 
   factory UserLoginModel.fromJson(Map<String, dynamic> json) => UserLoginModel(
-      id: json["id"],
-      name: json["name"],
-      email: json["email"],
-      password: json["password"],
-      address: json["address"],
-      houseNumber: json["houseNumber"],
-      phoneNumber: json["phoneNumber"],
-      city: json["city"],
-      roles: json["roles"]);
+        id: json["id"],
+        name: json["name"],
+        email: json["email"],
+        password: json["password"],
+        address: json["address"],
+        houseNumber: json["houseNumber"],
+        phoneNumber: json["phoneNumber"],
+        city: json["city"],
+        roles: json["roles"],
+      );
 
   Map<String, dynamic> toJson() => {
         "id": id,
@@ -55,6 +57,6 @@ class UserLoginModel {
         "houseNumber": houseNumber,
         "phoneNumber": phoneNumber,
         "city": city,
-        "roles": roles
+        "roles": roles,
       };
 }

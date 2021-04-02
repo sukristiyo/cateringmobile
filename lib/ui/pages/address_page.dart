@@ -11,7 +11,7 @@ class _AddressPageState extends State<AddressPage> {
     TextEditingController phoneController = TextEditingController();
     TextEditingController addressController = TextEditingController();
     TextEditingController houseController = TextEditingController();
-    TextEditingController cityController = TextEditingController();
+    // TextEditingController cityController = TextEditingController();
 
     return GeneralPage(
       title: 'Address',
@@ -108,14 +108,28 @@ class _AddressPageState extends State<AddressPage> {
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
                 border: Border.all(color: "FFC700".toColor())),
-            child: TextField(
-              controller: cityController,
-              style: TextStyle(color: Colors.white),
-              decoration: InputDecoration(
-                  border: InputBorder.none,
-                  hintStyle: whiteFontStyle3,
-                  hintText: 'Type your City'),
-            ),
+            child: DropdownButton(
+                focusColor: Colors.blue,
+                isExpanded: true,
+                underline: SizedBox(),
+                items: [
+                  DropdownMenuItem(
+                      child: Text(
+                    'Batam',
+                    style: whiteFontStyle3,
+                  )),
+                  DropdownMenuItem(
+                      child: Text(
+                    'Pekanbaru',
+                    style: whiteFontStyle3,
+                  )),
+                  DropdownMenuItem(
+                      child: Text(
+                    'Jakarta',
+                    style: whiteFontStyle3,
+                  )),
+                ],
+                onChanged: (item) {}),
           ),
           Container(
             width: double.infinity,

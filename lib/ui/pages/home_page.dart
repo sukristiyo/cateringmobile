@@ -22,7 +22,7 @@ class _HomePageState extends State<HomePage> {
         )),
         Align(
           alignment: Alignment.bottomCenter,
-          child: Text("Navbar"),
+          child: NavbarButton(),
         ),
       ],
     ));

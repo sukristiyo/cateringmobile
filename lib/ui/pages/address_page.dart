@@ -26,7 +26,7 @@ class _AddressPageState extends State<AddressPage> {
             margin: EdgeInsets.fromLTRB(defaultMargin, 26, defaultMargin, 6),
             child: Text(
               "Phone No.",
-              style: whiteFontStyle2,
+              style: blackFontStyle2,
             ),
           ),
           Container(
@@ -38,10 +38,10 @@ class _AddressPageState extends State<AddressPage> {
                 border: Border.all(color: "FFC700".toColor())),
             child: TextField(
               controller: phoneController,
-              style: TextStyle(color: Colors.white),
+              style: TextStyle(color: Colors.black),
               decoration: InputDecoration(
                   border: InputBorder.none,
-                  hintStyle: whiteFontStyle3,
+                  hintStyle: blackFontStyle3,
                   hintText: 'Type your phone number'),
             ),
           ),
@@ -50,7 +50,7 @@ class _AddressPageState extends State<AddressPage> {
             margin: EdgeInsets.fromLTRB(defaultMargin, 16, defaultMargin, 6),
             child: Text(
               "Address",
-              style: whiteFontStyle2,
+              style: blackFontStyle2,
             ),
           ),
           Container(
@@ -62,10 +62,10 @@ class _AddressPageState extends State<AddressPage> {
                 border: Border.all(color: "FFC700".toColor())),
             child: TextField(
               controller: addressController,
-              style: TextStyle(color: Colors.white),
+              style: TextStyle(color: Colors.black),
               decoration: InputDecoration(
                   border: InputBorder.none,
-                  hintStyle: whiteFontStyle3,
+                  hintStyle: blackFontStyle3,
                   hintText: 'Type your address'),
             ),
           ),
@@ -74,7 +74,7 @@ class _AddressPageState extends State<AddressPage> {
             margin: EdgeInsets.fromLTRB(defaultMargin, 16, defaultMargin, 6),
             child: Text(
               "House No.",
-              style: whiteFontStyle2,
+              style: blackFontStyle2,
             ),
           ),
           Container(
@@ -86,10 +86,10 @@ class _AddressPageState extends State<AddressPage> {
                 border: Border.all(color: "FFC700".toColor())),
             child: TextField(
               controller: houseController,
-              style: TextStyle(color: Colors.white),
+              style: TextStyle(color: Colors.black),
               decoration: InputDecoration(
                   border: InputBorder.none,
-                  hintStyle: whiteFontStyle3,
+                  hintStyle: blackFontStyle3,
                   hintText: 'Type your House Number'),
             ),
           ),
@@ -98,7 +98,7 @@ class _AddressPageState extends State<AddressPage> {
             margin: EdgeInsets.fromLTRB(defaultMargin, 16, defaultMargin, 6),
             child: Text(
               "City",
-              style: whiteFontStyle2,
+              style: blackFontStyle2,
             ),
           ),
           Container(
@@ -116,17 +116,17 @@ class _AddressPageState extends State<AddressPage> {
                   DropdownMenuItem(
                       child: Text(
                     'Batam',
-                    style: whiteFontStyle3,
+                    style: blackFontStyle3,
                   )),
                   DropdownMenuItem(
                       child: Text(
                     'Pekanbaru',
-                    style: whiteFontStyle3,
+                    style: blackFontStyle3,
                   )),
                   DropdownMenuItem(
                       child: Text(
                     'Jakarta',
-                    style: whiteFontStyle3,
+                    style: blackFontStyle3,
                   )),
                 ],
                 onChanged: (item) {}),

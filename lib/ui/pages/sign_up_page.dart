@@ -44,7 +44,7 @@ class _SignUpPageState extends State<SignUpPage> {
             margin: EdgeInsets.fromLTRB(defaultMargin, 16, defaultMargin, 6),
             child: Text(
               "Full Name",
-              style: whiteFontStyle2,
+              style: blackFontStyle2,
             ),
           ),
           Container(
@@ -56,10 +56,10 @@ class _SignUpPageState extends State<SignUpPage> {
                 border: Border.all(color: "FFC700".toColor())),
             child: TextField(
               controller: nameController,
-              style: TextStyle(color: Colors.white),
+              style: TextStyle(color: Colors.black),
               decoration: InputDecoration(
                   border: InputBorder.none,
-                  hintStyle: whiteFontStyle3,
+                  hintStyle: blackFontStyle3,
                   hintText: 'Type your Full Name'),
             ),
           ),
@@ -68,7 +68,7 @@ class _SignUpPageState extends State<SignUpPage> {
             margin: EdgeInsets.fromLTRB(defaultMargin, 26, defaultMargin, 6),
             child: Text(
               "Email Address",
-              style: whiteFontStyle2,
+              style: blackFontStyle2,
             ),
           ),
           Container(
@@ -80,10 +80,10 @@ class _SignUpPageState extends State<SignUpPage> {
                 border: Border.all(color: "FFC700".toColor())),
             child: TextField(
               controller: emailController,
-              style: TextStyle(color: Colors.white),
+              style: TextStyle(color: Colors.black),
               decoration: InputDecoration(
                   border: InputBorder.none,
-                  hintStyle: whiteFontStyle3,
+                  hintStyle: blackFontStyle3,
                   hintText: 'Type your email address'),
             ),
           ),
@@ -92,7 +92,7 @@ class _SignUpPageState extends State<SignUpPage> {
             margin: EdgeInsets.fromLTRB(defaultMargin, 16, defaultMargin, 6),
             child: Text(
               "Password",
-              style: whiteFontStyle2,
+              style: blackFontStyle2,
             ),
           ),
           Container(
@@ -104,10 +104,10 @@ class _SignUpPageState extends State<SignUpPage> {
                 border: Border.all(color: "FFC700".toColor())),
             child: TextField(
               controller: passwordController,
-              style: TextStyle(color: Colors.white),
+              style: TextStyle(color: Colors.black),
               decoration: InputDecoration(
                   border: InputBorder.none,
-                  hintStyle: whiteFontStyle3,
+                  hintStyle: blackFontStyle3,
                   hintText: 'Type your password'),
             ),
           ),

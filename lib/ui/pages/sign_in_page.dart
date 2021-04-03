@@ -85,7 +85,7 @@ class _SignInPageState extends State<SignInPage> {
             margin: EdgeInsets.fromLTRB(defaultMargin, 26, defaultMargin, 6),
             child: Text(
               "Email Address",
-              style: whiteFontStyle2,
+              style: blackFontStyle2,
             ),
           ),
           Container(
@@ -97,11 +97,11 @@ class _SignInPageState extends State<SignInPage> {
                 border: Border.all(color: "FFC700".toColor())),
             child: TextField(
               controller: emailController,
-              style: TextStyle(color: Colors.white),
+              style: TextStyle(color: Colors.black),
               decoration: InputDecoration(
                   border: InputBorder.none,
-                  prefixIcon: Icon(Icons.email, color: Colors.white),
-                  hintStyle: whiteFontStyle3,
+                  prefixIcon: Icon(Icons.email, color: Colors.black),
+                  hintStyle: blackFontStyle3,
                   hintText: 'Type your email address'),
             ),
           ),
@@ -110,7 +110,7 @@ class _SignInPageState extends State<SignInPage> {
             margin: EdgeInsets.fromLTRB(defaultMargin, 16, defaultMargin, 6),
             child: Text(
               "Password",
-              style: whiteFontStyle2,
+              style: blackFontStyle2,
             ),
           ),
           Container(
@@ -122,12 +122,12 @@ class _SignInPageState extends State<SignInPage> {
                 border: Border.all(color: "FFC700".toColor())),
             child: TextField(
               controller: passwordController,
-              style: TextStyle(color: Colors.white),
+              style: TextStyle(color: Colors.black),
               decoration: InputDecoration(
                 border: InputBorder.none,
-                prefixIcon: Icon(Icons.lock, color: Colors.white),
+                prefixIcon: Icon(Icons.lock, color: Colors.black),
                 hintText: 'Type your password',
-                hintStyle: whiteFontStyle3,
+                hintStyle: blackFontStyle3,
               ),
             ),
           ),
@@ -147,11 +147,11 @@ class _SignInPageState extends State<SignInPage> {
                     elevation: 0,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8)),
-                    color: purpleColor,
+                    color: whiteColor,
                     child: Text(
                       'Forgot Password?',
                       style: GoogleFonts.poppins(
-                          color: Colors.white, fontWeight: FontWeight.w500),
+                          color: Colors.black, fontWeight: FontWeight.w500),
                     ),
                   ),
           ),
@@ -197,11 +197,11 @@ class _SignInPageState extends State<SignInPage> {
                     elevation: 0,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8)),
-                    color: whiteColor,
+                    color: purpleColor,
                     child: Text(
                       'Create To Account',
                       style: GoogleFonts.poppins(
-                          color: Colors.black, fontWeight: FontWeight.w500),
+                          color: Colors.white, fontWeight: FontWeight.w500),
                     ),
                   ),
           ),

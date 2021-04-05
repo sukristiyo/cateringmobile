@@ -36,17 +36,18 @@ class NavbarButton extends StatelessWidget {
           GestureDetector(
             onTap: () {
               if (onTap != null) {
-                onTap(0);
+                onTap(1);
               }
             },
             child: Container(
               width: 32,
               height: 32,
+              margin: EdgeInsets.symmetric(horizontal: 83),
               decoration: BoxDecoration(
                   image: DecorationImage(
                       image: AssetImage(
-                        'assets/ic_home' +
-                            ((selectedIndex == 0) ? '.png' : '_normal.png'),
+                        'assets/ic_order' +
+                            ((selectedIndex == 1) ? '.png' : '_normal.png'),
                       ),
                       fit: BoxFit.contain)),
             ),
@@ -54,7 +55,7 @@ class NavbarButton extends StatelessWidget {
           GestureDetector(
             onTap: () {
               if (onTap != null) {
-                onTap(0);
+                onTap(2);
               }
             },
             child: Container(
@@ -63,8 +64,8 @@ class NavbarButton extends StatelessWidget {
               decoration: BoxDecoration(
                   image: DecorationImage(
                       image: AssetImage(
-                        'assets/ic_home' +
-                            ((selectedIndex == 0) ? '.png' : '_normal.png'),
+                        'assets/ic_profile' +
+                            ((selectedIndex == 2) ? '.png' : '_normal.png'),
                       ),
                       fit: BoxFit.contain)),
             ),

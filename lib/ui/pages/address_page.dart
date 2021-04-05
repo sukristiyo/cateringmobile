@@ -109,7 +109,7 @@ class _AddressPageState extends State<AddressPage> {
                 borderRadius: BorderRadius.circular(8),
                 border: Border.all(color: "FFC700".toColor())),
             child: DropdownButton(
-                focusColor: Colors.blue,
+                // focusColor: Colors.blue,
                 isExpanded: true,
                 underline: SizedBox(),
                 items: [

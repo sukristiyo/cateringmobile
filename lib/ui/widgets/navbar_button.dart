@@ -18,8 +18,8 @@ class NavbarButton extends StatelessWidget {
           Container(
             width: 32,
             height: 32,
-            decoration: BoxDecoration(
-                image: DecorationImage(image: AssetImage('assets/ic_home'))),
+            // decoration: BoxDecoration(
+            //     image: DecorationImage(image: AssetImage('assets/ic_home'))),
           )
         ],
       ),

@@ -14,7 +14,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   void startTimer() {
     Timer(Duration(seconds: 3), () {
-      Navigator.pushNamed(context, '/sign_in_page');
+      Navigator.of(context).pushReplacementNamed('/sign_in_page');
     });
   }
 

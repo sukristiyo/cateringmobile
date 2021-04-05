@@ -15,12 +15,60 @@ class NavbarButton extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Container(
-            width: 32,
-            height: 32,
-            // decoration: BoxDecoration(
-            //     image: DecorationImage(image: AssetImage('assets/ic_home'))),
-          )
+          GestureDetector(
+            onTap: () {
+              if (onTap != null) {
+                onTap(0);
+              }
+            },
+            child: Container(
+              width: 32,
+              height: 32,
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage(
+                        'assets/ic_home' +
+                            ((selectedIndex == 0) ? '.png' : '_normal.png'),
+                      ),
+                      fit: BoxFit.contain)),
+            ),
+          ),
+          GestureDetector(
+            onTap: () {
+              if (onTap != null) {
+                onTap(0);
+              }
+            },
+            child: Container(
+              width: 32,
+              height: 32,
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage(
+                        'assets/ic_home' +
+                            ((selectedIndex == 0) ? '.png' : '_normal.png'),
+                      ),
+                      fit: BoxFit.contain)),
+            ),
+          ),
+          GestureDetector(
+            onTap: () {
+              if (onTap != null) {
+                onTap(0);
+              }
+            },
+            child: Container(
+              width: 32,
+              height: 32,
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage(
+                        'assets/ic_home' +
+                            ((selectedIndex == 0) ? '.png' : '_normal.png'),
+                      ),
+                      fit: BoxFit.contain)),
+            ),
+          ),
         ],
       ),
     );

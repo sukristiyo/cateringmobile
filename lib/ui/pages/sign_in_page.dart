@@ -44,10 +44,6 @@ class _SignInPageState extends State<SignInPage> {
                 child: Text('Approve'),
                 onPressed: () {
                   Navigator.of(context).pop();
-                  // Navigator.push(
-                  //   context,
-                  //   MaterialPageRoute(builder: (context) => HomePage()),
-                  // );
                 },
               ),
             ],

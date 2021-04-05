@@ -32,9 +32,9 @@ class _SignUpPageState extends State<SignUpPage> {
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 // image: DecorationImage(
-                //   image: Image.Network(
+                //   image: Image.network(
                 //       'https://images.unsplash.com/photo-1547721064-da6cfb341d50'),
-                // fit: BoxFit.cover,
+                //   fit: BoxFit.cover,
                 // ),
               ),
             ),

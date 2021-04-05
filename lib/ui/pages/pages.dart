@@ -4,12 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:supercharged/supercharged.dart';
 import 'package:catering/shared/shared.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
+// import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter/services.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 // import 'package:get/utils.dart';
 // import 'package:get/get.dart';
+import 'dart:async';
 
 part 'package:catering/services/baseapiservices.dart';
 part 'package:catering/services/userloginservices.dart';
@@ -17,6 +18,7 @@ part 'package:catering/services/apiresponse.dart';
 part 'package:catering/models/constanta.dart';
 part 'package:catering/models/userloginmodel.dart';
 
+part 'splash_screen.dart';
 part 'general_page.dart';
 part 'sign_in_page.dart';
 part 'sign_up_page.dart';

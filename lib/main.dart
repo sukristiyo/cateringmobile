@@ -12,8 +12,9 @@ class Ecatering extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: HomePage(),
+        home: SplashScreen(),
         routes: <String, WidgetBuilder>{
+          '/splash_screen': (BuildContext context) => SplashScreen(),
           '/sign_in_page': (BuildContext context) => SignInPage(),
           '/sign_up_page': (BuildContext context) => SignUpPage(),
           '/address_page': (BuildContext context) => AddressPage(),

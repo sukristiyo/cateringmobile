@@ -9,10 +9,8 @@ class SignInPage extends StatefulWidget {
 class _SignInPageState extends State<SignInPage> {
   var emailController = new TextEditingController();
   var passwordController = new TextEditingController();
-  // final _formkey = GlobalKey<FormState>();
-  bool isLoading = false;
+  // bool isLoading = true;
   ApiResponse apiResponse;
-  // TextEditingController
 
   @override
   void initState() {
@@ -131,75 +129,78 @@ class _SignInPageState extends State<SignInPage> {
             margin: EdgeInsets.only(top: 1),
             alignment: FractionalOffset.bottomRight,
             padding: EdgeInsets.symmetric(horizontal: defaultMargin),
-            child: isLoading
-                ? SpinKitFadingCircle(
-                    size: 45,
-                    color: mainColor,
-                  )
-                : RaisedButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/forgot_page');
-                    },
-                    elevation: 0,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8)),
-                    color: whiteColor,
-                    child: Text(
-                      'Forgot Password?',
-                      style: GoogleFonts.poppins(
-                          color: Colors.black, fontWeight: FontWeight.w500),
-                    ),
-                  ),
+            child:
+                // isLoading
+                //     ? SpinKitFadingCircle(
+                //         size: 45,
+                //         color: mainColor,
+                //       ) :
+                RaisedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/forgot_page');
+              },
+              elevation: 0,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8)),
+              color: whiteColor,
+              child: Text(
+                'Forgot Password?',
+                style: GoogleFonts.poppins(
+                    color: Colors.black, fontWeight: FontWeight.w500),
+              ),
+            ),
           ),
           Container(
             width: double.infinity,
             margin: EdgeInsets.only(top: 5),
             height: 45,
             padding: EdgeInsets.symmetric(horizontal: defaultMargin),
-            child: isLoading
-                ? SpinKitFadingCircle(
-                    size: 45,
-                    color: mainColor,
-                  )
-                : RaisedButton(
-                    onPressed: () {
-                      authentication();
-                    },
-                    elevation: 0,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8)),
-                    color: mainColor,
-                    child: Text(
-                      'Sign In',
-                      style: GoogleFonts.poppins(
-                          color: Colors.black, fontWeight: FontWeight.w500),
-                    ),
-                  ),
+            child:
+                // isLoading
+                //     ? SpinKitFadingCircle(
+                //         size: 45,
+                //         color: mainColor,
+                //       ) :
+                RaisedButton(
+              onPressed: () {
+                authentication();
+              },
+              elevation: 0,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8)),
+              color: mainColor,
+              child: Text(
+                'Sign In',
+                style: GoogleFonts.poppins(
+                    color: Colors.black, fontWeight: FontWeight.w500),
+              ),
+            ),
           ),
           Container(
             width: double.infinity,
             margin: EdgeInsets.only(top: 24),
             height: 45,
             padding: EdgeInsets.symmetric(horizontal: defaultMargin),
-            child: isLoading
-                ? SpinKitFadingCircle(
-                    size: 45,
-                    color: whiteColor,
-                  )
-                : RaisedButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/sign_up_page');
-                    },
-                    elevation: 0,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8)),
-                    color: purpleColor,
-                    child: Text(
-                      'Create To Account',
-                      style: GoogleFonts.poppins(
-                          color: Colors.white, fontWeight: FontWeight.w500),
-                    ),
-                  ),
+            child:
+                // isLoading
+                //     ? SpinKitFadingCircle(
+                //         size: 45,
+                //         color: whiteColor,
+                //       ) :
+                RaisedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/sign_up_page');
+              },
+              elevation: 0,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8)),
+              color: purpleColor,
+              child: Text(
+                'Create To Account',
+                style: GoogleFonts.poppins(
+                    color: Colors.white, fontWeight: FontWeight.w500),
+              ),
+            ),
           ),
         ],
       ),

@@ -4,13 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:supercharged/supercharged.dart';
 import 'package:catering/shared/shared.dart';
 import 'package:google_fonts/google_fonts.dart';
-// import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'dart:async';
 import 'package:flutter/services.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 // import 'package:get/utils.dart';
 // import 'package:get/get.dart';
-import 'dart:async';
+/// import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 part 'package:catering/services/baseapiservices.dart';
 part 'package:catering/services/userloginservices.dart';

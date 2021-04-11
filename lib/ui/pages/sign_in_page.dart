@@ -2,13 +2,16 @@ part of 'pages.dart';
 
 class SignInPage extends StatefulWidget {
   static String tag = 'UserLogin';
+
   @override
   _SignInPageState createState() => _SignInPageState();
 }
 
 class _SignInPageState extends State<SignInPage> {
+  bool isAuth = false;
   var emailController = new TextEditingController();
   var passwordController = new TextEditingController();
+
   // bool isLoading = true;
   ApiResponse apiResponse;
 
@@ -17,47 +20,24 @@ class _SignInPageState extends State<SignInPage> {
     super.initState();
   }
 
-  void authentication() {
-    UserLoginModel userLoginModel = new UserLoginModel(
-        email: emailController.text, password: passwordController.text);
-
-// dialog alert
-
-    var requestBody = jsonEncode(userLoginModel.toJson());
-    UserLoginServices.authentication(requestBody).then((value) {
-      final result = value;
-      if (result.success == true && result.code == 200) {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => HomePage()),
-        );
-      } else {
-        _showMyDialog();
-      }
-    }).catchError((error) {
-      // String err = error.toString();
-    });
-    print(requestBody);
-  }
-
   Future<void> _showMyDialog() async {
     return showDialog<void>(
       context: context,
       barrierDismissible: false, // user must tap button!
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('AlertDialog Title'),
+          title: Text('User Warning'),
           content: SingleChildScrollView(
             child: ListBody(
               children: <Widget>[
-                Text('This is a demo alert dialog.'),
-                Text('Would you like to approve of this message?'),
+                Text('Your email or password is invalid.'),
+                Text('Please try again !!!'),
               ],
             ),
           ),
           actions: <Widget>[
             TextButton(
-              child: Text('Approve'),
+              child: Text('Close'),
               onPressed: () {
                 Navigator.of(context).pop();
               },
@@ -66,6 +46,43 @@ class _SignInPageState extends State<SignInPage> {
         );
       },
     );
+  }
+
+  void _storeLoginData(String email) async {
+    final storage = FlutterSecureStorage();
+    await storage.write(key: Constanta.keyEmail, value: email);
+  }
+
+  void authentication() {
+    setState(() {
+      isAuth = true;
+    });
+    UserLoginModel userLoginModel = new UserLoginModel(
+        email: emailController.text, password: passwordController.text);
+
+    var requestBody = jsonEncode(userLoginModel.toJson());
+    print(requestBody);
+    UserLoginServices.authentication(requestBody).then((value) {
+      final result = value;
+      if (result.success == true && result.code == 200) {
+        _storeLoginData(emailController.text);
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => HomePage()),
+        );
+      } else {
+        _showMyDialog();
+      }
+      setState(() {
+        isAuth = false;
+      });
+    }).catchError((error) {
+      setState(() {
+        isAuth = false;
+      });
+      print(error.toString());
+      // String err = error.toString();
+    });
   }
 
   @override
@@ -156,26 +173,22 @@ class _SignInPageState extends State<SignInPage> {
             margin: EdgeInsets.only(top: 5),
             height: 45,
             padding: EdgeInsets.symmetric(horizontal: defaultMargin),
-            child:
-                // isLoading
-                //     ? SpinKitFadingCircle(
-                //         size: 45,
-                //         color: mainColor,
-                //       ) :
-                RaisedButton(
-              onPressed: () {
-                authentication();
-              },
-              elevation: 0,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8)),
-              color: mainColor,
-              child: Text(
-                'Sign In',
-                style: GoogleFonts.poppins(
-                    color: Colors.black, fontWeight: FontWeight.w500),
-              ),
-            ),
+            child: isAuth
+                ? CircularProgressIndicator()
+                : RaisedButton(
+                    onPressed: () {
+                      authentication();
+                    },
+                    elevation: 0,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8)),
+                    color: mainColor,
+                    child: Text(
+                      'Sign In',
+                      style: GoogleFonts.poppins(
+                          color: Colors.black, fontWeight: FontWeight.w500),
+                    ),
+                  ),
           ),
           Container(
             width: double.infinity,

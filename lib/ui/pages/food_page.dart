@@ -26,13 +26,13 @@ class _FoodPageState extends State<FoodPage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        'Food Market',
+                        'Kuke Market',
                         style: blackFontStyle1,
                       ),
                       Text(
                         "Let's get some foods",
-                        style:
-                            blackFontStyle.copyWith(fontWeight: FontWeight.w300),
+                        style: blackFontStyle.copyWith(
+                            fontWeight: FontWeight.w300),
                       ),
                     ],
                   ),

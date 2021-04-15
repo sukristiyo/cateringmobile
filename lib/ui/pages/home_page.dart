@@ -29,13 +29,13 @@ class _HomePageState extends State<HomePage> {
           },
           children: [
             Center(
-              child: Text("Home"),
+              child: FoodPage(),
             ),
             Center(
               child: Text("Order"),
             ),
             Center(
-              child: Text("Profile"),
+              child: Text("Order") ,
             ),
           ],
         )),

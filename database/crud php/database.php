@@ -19,7 +19,7 @@ class Database{
             exit;
         }
         
-        
+     
     }
 }
 ?>

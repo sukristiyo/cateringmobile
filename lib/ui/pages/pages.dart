@@ -26,3 +26,5 @@ part 'sign_up_page.dart';
 part 'address_page.dart';
 part 'forgot_page.dart';
 part 'home_page.dart';
+part 'food_page.dart';
+// part 'profile_page.dart';

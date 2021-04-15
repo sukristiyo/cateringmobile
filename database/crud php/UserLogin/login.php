@@ -17,34 +17,31 @@ $data = json_decode(file_get_contents("php://input"));
 //CHECKING, IF ID AVAILABLE ON $data
 if(isset($data->email) && isset($data->password)){
     
-    $msg['success'] = false;
-    $msg['code'] = 200;
-    $msg['message'] = "";
-    $msg['content'] = null;
+    $apiResponse['success']=false;
+    $apiResponse['code']=200;
+    $apiResponse['messages']="";
+    $apiResponse['content']=null;
     $email = $data->email;
     $password = $data->password;
     
-    
     //GET POST BY ID FROM DATABASE
-    $get_post = "SELECT * FROM user WHERE email=:email and password=:password ";
+    $get_post = "SELECT * FROM user WHERE email=:email AND paswword=:password";
     $get_stmt = $conn->prepare($get_post);
     $get_stmt->bindValue(':email', $email,PDO::PARAM_STR);
     $get_stmt->bindValue(':password', $password,PDO::PARAM_STR);
     $get_stmt->execute();
 
-
     //CHECK WHETHER THERE IS ANY POST IN OUR DATABASE
     if($get_stmt->rowCount() > 0){
-
-		$msg['success'] = true;
-		$msg['message'] = 'User Logged';
+		$apiResponse['success']=true;
+        $apiResponse['messages'] = 'User Logged';
     }
     else{
-		$msg['success'] = false;
-        $msg['message'] = 'Invlid Email or Password';
-    }  
-    
-    echo  json_encode($msg);
+		$apiResponse['success']=false;
+        $apiResponse['messages'] = 'Invalid Email or Password';
+    }
+
+    echo json_decode($apiResponse);
     
 }
 ?>

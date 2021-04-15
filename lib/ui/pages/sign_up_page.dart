@@ -13,6 +13,9 @@ class _SignUpPageState extends State<SignUpPage> {
   TextEditingController phoneController = TextEditingController();
   TextEditingController addressController = TextEditingController();
   TextEditingController houseController = TextEditingController();
+  TextEditingController cityController = TextEditingController();
+  // static String kota;
+  static String role = "user";
 
   @override
   void initState() {
@@ -51,7 +54,13 @@ class _SignUpPageState extends State<SignUpPage> {
     UserLoginModel userLoginModel = new UserLoginModel(
         email: emailController.text,
         password: passwordController.text,
-        name: nameController.text);
+        name: nameController.text,
+        address: addressController.text,
+        houseNumber: houseController.text,
+        phoneNumber: phoneController.text,
+        city: cityController.text,
+        // city: kota,
+        roles: role);
 
     var requestBody = jsonEncode(userLoginModel.toJson());
     print(requestBody);
@@ -84,14 +93,14 @@ class _SignUpPageState extends State<SignUpPage> {
             decoration: BoxDecoration(
                 image: DecorationImage(
                     image: AssetImage('assets/photo_border.png'))),
-            child: Container(
-              decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  image: DecorationImage(
-                      image: NetworkImage(
-                          'https://www.facebook.com/789278027898220/photos/a.821656274660395/821656277993728/'),
-                      fit: BoxFit.cover)),
-            ),
+            //   child: Container(
+            //     decoration: BoxDecoration(
+            //         shape: BoxShape.circle,
+            //         image: DecorationImage(
+            //             image: NetworkImage(
+            //                 'https://www.facebook.com/789278027898220/photos/a.821656274660395/821656277993728/'),
+            //             fit: BoxFit.cover)),
+            //   ),
           ),
           Container(
             width: double.infinity,
@@ -252,29 +261,53 @@ class _SignUpPageState extends State<SignUpPage> {
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
                 border: Border.all(color: "FFC700".toColor())),
-            child: DropdownButton(
-                // focusColor: Colors.blue,
-                isExpanded: true,
-                underline: SizedBox(),
-                items: [
-                  DropdownMenuItem(
-                      child: Text(
-                    'Batam',
-                    style: blackFontStyle3,
-                  )),
-                  DropdownMenuItem(
-                      child: Text(
-                    'Pekanbaru',
-                    style: blackFontStyle3,
-                  )),
-                  DropdownMenuItem(
-                      child: Text(
-                    'Jakarta',
-                    style: blackFontStyle3,
-                  )),
-                ],
-                onChanged: (item) {}),
+            child: TextField(
+              controller: cityController,
+              style: TextStyle(color: Colors.black),
+              decoration: InputDecoration(
+                  border: InputBorder.none,
+                  hintStyle: blackFontStyle3,
+                  hintText: 'Type your city'),
+            ),
           ),
+          // Container(
+          //   width: double.infinity,
+          //   margin: EdgeInsets.fromLTRB(defaultMargin, 16, defaultMargin, 6),
+          //   child: Text(
+          //     "City",
+          //     style: blackFontStyle2,
+          //   ),
+          // ),
+          // Container(
+          //   width: double.infinity,
+          //   margin: EdgeInsets.symmetric(horizontal: defaultMargin),
+          //   padding: EdgeInsets.symmetric(horizontal: 10),
+          //   decoration: BoxDecoration(
+          //       borderRadius: BorderRadius.circular(8),
+          //       border: Border.all(color: "FFC700".toColor())),
+          //   child: DropdownButton(
+          //       // focusColor: Colors.blue,
+          //       isExpanded: true,
+          //       underline: SizedBox(),
+          //       items: [
+          //         DropdownMenuItem(
+          //             child: Text(
+          //           'Batam',
+          //           style: blackFontStyle3,
+          //         )),
+          //         DropdownMenuItem(
+          //             child: Text(
+          //           'Pekanbaru',
+          //           style: blackFontStyle3,
+          //         )),
+          //         DropdownMenuItem(
+          //             child: Text(
+          //           'Jakarta',
+          //           style: blackFontStyle3,
+          //         )),
+          //       ],
+          //       onChanged: (item) {}),
+          // ),
           Container(
             width: double.infinity,
             margin: EdgeInsets.only(top: 24),

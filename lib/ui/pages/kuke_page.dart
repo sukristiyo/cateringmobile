@@ -1,11 +1,11 @@
 part of 'pages.dart';
 
-class FoodPage extends StatefulWidget {
+class KukePage extends StatefulWidget {
   @override
-  _FoodPageState createState() => _FoodPageState();
+  _KukePageState createState() => _KukePageState();
 }
 
-class _FoodPageState extends State<FoodPage> {
+class _KukePageState extends State<KukePage> {
   @override
   Widget build(BuildContext context) {
     return ListView(
@@ -39,6 +39,8 @@ class _FoodPageState extends State<FoodPage> {
                 ],
               ),
             ),
+            ///// Rating & card kuke
+            KukePage()
           ],
         )
       ],

@@ -28,7 +28,7 @@ List<Food> mockFoods = [
       id: 1,
       picturePath:
           "https://i.pinimg.com/736x/06/7b/28/067b2879e5c9c42ec669bf639c3fbffc.jpg",
-      name: "Sate Sayur Sultan",
+      name: "Sate Medan",
       description:
           "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
       ingredients:

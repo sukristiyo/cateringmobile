@@ -35,7 +35,7 @@ class _HomePageState extends State<HomePage> {
               child: Text("Order"),
             ),
             Center(
-              child: Text("Order"),
+              child: ProfilePage(),
             ),
           ],
         )),

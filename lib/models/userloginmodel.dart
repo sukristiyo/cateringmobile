@@ -26,7 +26,7 @@ class UserLoginModel {
     this.roles,
   });
 
-  String id;
+  int id;
   String name;
   String email;
   String password;

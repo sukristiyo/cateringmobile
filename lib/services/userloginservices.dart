@@ -18,7 +18,7 @@ class UserLoginServices {
 
   static Future<ApiResponse> insertData(dynamic requestBody) async {
     ApiResponse apiResponse;
-    await BaseApiService.sendPostRequest(endpoint1, "", requestBody)
+    await BaseApiService.sendPostRequest(endpoint2, "", requestBody)
         .then((value) {
       apiResponse = value;
     });

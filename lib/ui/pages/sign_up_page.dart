@@ -41,7 +41,7 @@ class _SignUpPageState extends State<SignUpPage> {
             TextButton(
               child: Text("Ok"),
               onPressed: () {
-                Navigator.of(context).pop();
+                Navigator.pushNamed(context, '/sign_in_page');
               },
             ),
           ],
@@ -52,14 +52,13 @@ class _SignUpPageState extends State<SignUpPage> {
 
   void validation() {
     UserLoginModel userLoginModel = new UserLoginModel(
+        name: nameController.text,
         email: emailController.text,
         password: passwordController.text,
-        name: nameController.text,
         address: addressController.text,
         houseNumber: houseController.text,
         phoneNumber: phoneController.text,
         city: cityController.text,
-        // city: kota,
         roles: role);
 
     var requestBody = jsonEncode(userLoginModel.toJson());

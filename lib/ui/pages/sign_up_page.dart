@@ -165,6 +165,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 borderRadius: BorderRadius.circular(8),
                 border: Border.all(color: "FFC700".toColor())),
             child: TextField(
+              obscureText: true,
               controller: passwordController,
               style: TextStyle(color: Colors.black),
               decoration: InputDecoration(

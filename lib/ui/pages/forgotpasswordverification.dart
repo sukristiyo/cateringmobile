@@ -31,7 +31,7 @@ class _ForgotPasswordVerificationScreenState
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             SizedBox(height: 20.0),
-            new Icon(Icons.lock, size: 180.0, color: Colors.black),
+            new Icon(Icons.lock, size: 180.0, color: mainColor),
             Text(
                 "Please Enter 6 Digit Verification Code Which is Sent to Your Email",
                 textAlign: TextAlign.center,
@@ -46,7 +46,7 @@ class _ForgotPasswordVerificationScreenState
                 filled: true,
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                  borderSide: BorderSide(color: Colors.blueAccent, width: 2),
+                  borderSide: BorderSide(color: mainColor, width: 2),
                 ),
                 hintText: "PIN",
                 prefixIcon: Icon(Icons.lock),
@@ -66,7 +66,7 @@ class _ForgotPasswordVerificationScreenState
                   },
                   child: Text(
                     "Confirm",
-                    style: TextStyle(color: Colors.white, fontSize: 18.0),
+                    style: TextStyle(color: Colors.black, fontSize: 18.0),
                   ),
                 )),
           ],
@@ -84,7 +84,7 @@ class _ForgotPasswordVerificationScreenState
           context,
           MaterialPageRoute(
               builder: (context) =>
-                  ResetPasswordScreen(verificationEmail: _verificationEmail)));
+                  ResetPassword(verificationEmail: _verificationEmail)));
     } else {
       print("Your Verification Code is Invalid");
     }

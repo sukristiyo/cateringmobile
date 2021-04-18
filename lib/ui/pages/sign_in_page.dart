@@ -68,7 +68,7 @@ class _SignInPageState extends State<SignInPage> {
         _storeLoginData(emailController.text);
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => HomePage()),
+          MaterialPageRoute(builder: (context) => SuccessSignUpPage()),
         );
       } else {
         _showMyDialog();
@@ -133,6 +133,7 @@ class _SignInPageState extends State<SignInPage> {
                 borderRadius: BorderRadius.circular(8),
                 border: Border.all(color: "FFC700".toColor())),
             child: TextField(
+              obscureText: true,
               controller: passwordController,
               style: TextStyle(color: Colors.black),
               decoration: InputDecoration(

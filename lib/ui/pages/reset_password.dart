@@ -31,7 +31,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             SizedBox(height: 20.0),
-            new Icon(Icons.lock_open, size: 180.0, color: Colors.black),
+            new Icon(Icons.lock_open, size: 100.0, color: mainColor),
             Text("Please Change Your Password",
                 textAlign: TextAlign.center, style: TextStyle(fontSize: 16)),
             TextFormField(

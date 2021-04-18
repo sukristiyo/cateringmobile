@@ -19,9 +19,9 @@ class _ResetPasswordState extends State<ResetPassword> {
   Widget build(BuildContext context) {
     return GeneralPage(
       title: 'Create New Password',
-      subtitle: "Please enter new password for your account",
+      subtitle: "Please enter new password",
       onBackButtonPressed: () {
-        Navigator.pop(context);
+        Navigator.pushNamed(context, '/sign_in_page');
       },
       child: Form(
         key: _formKey,
@@ -29,8 +29,8 @@ class _ResetPasswordState extends State<ResetPassword> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            SizedBox(height: 20.0),
-            new Icon(Icons.lock_open, size: 180.0, color: Colors.black),
+            SizedBox(height: 15.0),
+            new Icon(Icons.lock_open, size: 150.0, color: Colors.black),
             Text("Please Change Your Password",
                 textAlign: TextAlign.center, style: TextStyle(fontSize: 16)),
             TextFormField(
@@ -43,10 +43,10 @@ class _ResetPasswordState extends State<ResetPassword> {
                 filled: true,
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                  borderSide: BorderSide(color: Colors.blueAccent, width: 2),
+                  borderSide: BorderSide(color: mainColor, width: 2),
                 ),
                 hintText: "Type new password",
-                prefixIcon: Icon(Icons.lock),
+                prefixIcon: Icon(Icons.lock, color: Colors.black),
               ),
             ),
             Text(""),
@@ -60,16 +60,17 @@ class _ResetPasswordState extends State<ResetPassword> {
                 filled: true,
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                  borderSide: BorderSide(color: Colors.blueAccent, width: 2),
+                  borderSide: BorderSide(color: mainColor, width: 2),
                 ),
                 hintText: "Retype new password",
-                prefixIcon: Icon(Icons.lock),
+                prefixIcon: Icon(Icons.lock, color: Colors.black),
               ),
             ),
             Text(""),
             ButtonTheme(
                 buttonColor: mainColor,
                 minWidth: double.infinity,
+                padding: EdgeInsets.symmetric(horizontal: 10),
                 height: 45,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(22.0),
@@ -80,7 +81,7 @@ class _ResetPasswordState extends State<ResetPassword> {
                   },
                   child: Text(
                     "Reset Password",
-                    style: TextStyle(color: Colors.white, fontSize: 18.0),
+                    style: TextStyle(color: blackColor, fontSize: 18.0),
                   ),
                 )),
           ],

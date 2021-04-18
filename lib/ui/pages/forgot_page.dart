@@ -49,6 +49,49 @@ class _ForgotPasswordState extends State<ForgotPassword> {
     });
   }
 
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: AnnotatedRegion<SystemUiOverlayStyle>(
+        value: SystemUiOverlayStyle.light,
+        child: GestureDetector(
+          child: Stack(
+            children: <Widget>[
+              Container(
+                height: double.infinity,
+                width: double.infinity,
+                decoration: BoxDecoration(color: Color(0xff260868)),
+                child: SingleChildScrollView(
+                  physics: AlwaysScrollableScrollPhysics(),
+                  padding: EdgeInsets.symmetric(horizontal: 25, vertical: 120),
+                  child: Form(
+                    key: _formKey,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        buildBackBtn(),
+                        Icon(
+                          Icons.lock,
+                          color: mainColor,
+                          size: 250,
+                        ),
+                        textForgot(),
+                        SizedBox(height: 40),
+                        buildEmail(),
+                        SizedBox(height: 20),
+                        buildSendBtn(),
+                      ],
+                    ),
+                  ),
+                ),
+              )
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
   Widget textForgot() {
     return Column(
       children: <Widget>[
@@ -117,6 +160,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
               ]),
           height: 60,
           child: TextField(
+            controller: txtEmail,
             keyboardType: TextInputType.emailAddress,
             style: TextStyle(color: Colors.white),
             decoration: InputDecoration(
@@ -150,49 +194,6 @@ class _ForgotPasswordState extends State<ForgotPassword> {
               color: Color(0xff260868),
               fontSize: 18,
               fontWeight: FontWeight.bold),
-        ),
-      ),
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: AnnotatedRegion<SystemUiOverlayStyle>(
-        value: SystemUiOverlayStyle.light,
-        child: GestureDetector(
-          child: Stack(
-            children: <Widget>[
-              Container(
-                height: double.infinity,
-                width: double.infinity,
-                decoration: BoxDecoration(color: Color(0xff260868)),
-                child: SingleChildScrollView(
-                  physics: AlwaysScrollableScrollPhysics(),
-                  padding: EdgeInsets.symmetric(horizontal: 25, vertical: 120),
-                  child: Form(
-                    key: _formKey,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        buildBackBtn(),
-                        Icon(
-                          Icons.lock,
-                          color: mainColor,
-                          size: 250,
-                        ),
-                        textForgot(),
-                        SizedBox(height: 40),
-                        buildEmail(),
-                        SizedBox(height: 20),
-                        buildSendBtn(),
-                      ],
-                    ),
-                  ),
-                ),
-              )
-            ],
-          ),
         ),
       ),
     );

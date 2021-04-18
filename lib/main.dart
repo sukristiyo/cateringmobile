@@ -12,7 +12,7 @@ class Ecatering extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: AddressPage(),
+        home: ForgotPasswordVerificationScreen(),
         routes: <String, WidgetBuilder>{
           '/splash_screen': (BuildContext context) => SplashScreen(),
           '/sign_in_page': (BuildContext context) => SignInPage(),
@@ -20,6 +20,8 @@ class Ecatering extends StatelessWidget {
           '/address_page': (BuildContext context) => AddressPage(),
           '/forgot_page': (BuildContext context) => ForgotPassword(),
           '/home_page': (BuildContext context) => HomePage(),
+          '/resetpassword': (BuildContext context) => ResetPasswordScreen(),
+          '/change_password': (BuildContext context) => ResetPassword(),
         });
   }
 }

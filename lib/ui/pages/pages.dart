@@ -20,6 +20,7 @@ part 'package:catering/services/userloginservices.dart';
 part 'package:catering/services/apiresponse.dart';
 part 'package:catering/models/constanta.dart';
 part 'package:catering/models/userloginmodel.dart';
+part 'package:catering/models/verificationmodel.dart';
 
 part 'splash_screen.dart';
 part 'general_page.dart';
@@ -30,3 +31,6 @@ part 'forgot_page.dart';
 part 'home_page.dart';
 part 'kuke_page.dart';
 part 'profile_page.dart';
+part 'forgotpasswordverification.dart';
+part 'resetpassword.dart';
+part 'change_password.dart';

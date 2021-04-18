@@ -6,6 +6,49 @@ class ForgotPassword extends StatefulWidget {
 }
 
 class _ForgotPasswordState extends State<ForgotPassword> {
+  TextEditingController txtEmail = new TextEditingController();
+  VerificationCodeModel _verificationCodeModel = new VerificationCodeModel();
+
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  bool isSendEmailVerification = false;
+
+  void _sendVerification() {
+    Map map = {
+      "email": txtEmail.text,
+    };
+    var requestBody = jsonEncode(map);
+    UserLoginServices.sendEmailVerification(requestBody).then((value) {
+      final result = value;
+      if (result.success == true && result.code == 200) {
+        // _showSuccess();
+        _verificationCodeModel = VerificationCodeModel.fromJson(result.content);
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => ForgotPasswordVerificationScreen(
+                    verificationCodeModel: _verificationCodeModel)));
+      } else {
+        //_showError();
+        _handledVerifError(
+            "Failed to Send Verification Code, message: " + result.message);
+      }
+    }).catchError((error) {
+      _handledVerifError(
+          "Failed to Send Verification Code, message: " + error.toString());
+    });
+    print(requestBody);
+  }
+
+  void _handledVerifError(String errorMessage) {
+    //Dialog.showAlertMessage(errorMessage, context);
+    print(errorMessage);
+    if (!mounted) return;
+    setState(() {
+      isSendEmailVerification = false;
+    });
+  }
+
   Widget textForgot() {
     return Column(
       children: <Widget>[
@@ -95,7 +138,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
       child: RaisedButton(
         // onPressed: () => print('Send Pressed'),
         onPressed: () {
-          Navigator.pushNamed(context, '/verificationEmail');
+          _sendVerification();
         },
         elevation: 5,
         padding: EdgeInsets.all(15),
@@ -127,21 +170,24 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 child: SingleChildScrollView(
                   physics: AlwaysScrollableScrollPhysics(),
                   padding: EdgeInsets.symmetric(horizontal: 25, vertical: 120),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      buildBackBtn(),
-                      Icon(
-                        Icons.lock,
-                        color: mainColor,
-                        size: 250,
-                      ),
-                      textForgot(),
-                      SizedBox(height: 40),
-                      buildEmail(),
-                      SizedBox(height: 20),
-                      buildSendBtn(),
-                    ],
+                  child: Form(
+                    key: _formKey,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        buildBackBtn(),
+                        Icon(
+                          Icons.lock,
+                          color: mainColor,
+                          size: 250,
+                        ),
+                        textForgot(),
+                        SizedBox(height: 40),
+                        buildEmail(),
+                        SizedBox(height: 20),
+                        buildSendBtn(),
+                      ],
+                    ),
                   ),
                 ),
               )

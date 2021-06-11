@@ -35,28 +35,22 @@ class _ProfilePageState extends State<ProfilePage> {
                       child: Container(
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          // image: DecorationImage(
-                          //     image: NetworkImage((context
-                          //             .bloc<UserCubit>()
-                          //             .state as UserLoaded)
-                          //         .user
-                          //         .picturePath),
-                          //     fit: BoxFit.cover)
+                          image: DecorationImage(
+                                image: NetworkImage(mockUser.picturePath),
+                                fit: BoxFit.cover)
                         ),
                       ),
                     ),
-                    // Text(
-                    //   (context.bloc<UserCubit>().state as UserLoaded).user.name,
-                    //   style: GoogleFonts.poppins(
-                    //       fontSize: 18, fontWeight: FontWeight.w500),
-                    // ),
-                    // Text(
-                    //   // (context.bloc<UserCubit>().state as UserLoaded)
-                    //   //     .user
-                    //   //     .email,
-                    //   style:
-                    //       whiteFontStyle.copyWith(fontWeight: FontWeight.w300),
-                    // )
+                    Text(
+                      mockUser.name,
+                      style: GoogleFonts.poppins(
+                          fontSize: 18, fontWeight: FontWeight.w500),
+                    ),
+                    Text(
+                      mockUser.email,
+                      style:
+                          whiteFontStyle.copyWith(fontWeight: FontWeight.w300),
+                    )
                   ],
                 )),
             //// Body
@@ -66,7 +60,7 @@ class _ProfilePageState extends State<ProfilePage> {
               child: Column(
                 children: [
                   CustomTabBar(
-                    titles: ["Account", "FoodMarket"],
+                    titles: ["Account", "KukeApp"],
                     selectedIndex: selectedIndex,
                     onTap: (index) {
                       setState(() {
@@ -81,8 +75,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     children: ((selectedIndex == 0)
                             ? [
                                 'Edit Profile',
-                                'Home Address',
-                                'Security',
+                                'Forgot Password',
                                 'Payment'
                               ]
                             : [

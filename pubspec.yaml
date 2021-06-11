@@ -35,7 +35,6 @@ dependencies:
   equatable: ^1.2.4
   intl: ^0.16.1
 
-
 dev_dependencies:
   flutter_test:
     sdk: flutter

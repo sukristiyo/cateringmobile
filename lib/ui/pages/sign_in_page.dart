@@ -11,6 +11,9 @@ class _SignInPageState extends State<SignInPage> {
   bool isAuth = false;
   var emailController = new TextEditingController();
   var passwordController = new TextEditingController();
+  String uid;
+
+  UserLoginModel userLoginModel = new UserLoginModel();
 
   // bool isLoading = true;
   ApiResponse apiResponse;

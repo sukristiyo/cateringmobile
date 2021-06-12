@@ -20,7 +20,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
   Widget build(BuildContext context) {
     return GeneralPage(
       title: 'Create New Password',
-      subtitle: "Please enter new password for your account",
+      subtitle: "Please enter new password",
       onBackButtonPressed: () {
         Navigator.pop(context);
       },
@@ -31,15 +31,28 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             SizedBox(height: 20.0),
-            new Icon(Icons.lock_open, size: 100.0, color: mainColor),
-            Text("Please Change Your Password",
-                textAlign: TextAlign.center, style: TextStyle(fontSize: 16)),
+
             TextFormField(
               controller: txtPassword,
               obscureText: true,
               decoration: InputDecoration(
                 border: InputBorder.none,
-                fillColor: mainColor,
+                fillColor: Colors.white,
+                filled: true,
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                  borderSide: BorderSide(color: mainColor, width: 2),
+                ),
+                hintText: "old password",
+                prefixIcon: Icon(Icons.lock),
+              ),
+            ),
+            TextFormField(
+              controller: txtPassword,
+              obscureText: true,
+              decoration: InputDecoration(
+                border: InputBorder.none,
+                fillColor: Colors.white,
                 filled: true,
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(10.0)),

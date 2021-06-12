@@ -76,7 +76,6 @@ class _ProfilePageState extends State<ProfilePage> {
                             ? [
                                 'Edit Profile',
                                 'Forgot Password',
-                                'Payment'
                               ]
                             : [
                                 'Rate App',

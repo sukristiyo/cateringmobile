@@ -36,3 +36,4 @@ part 'profile_page.dart';
 part 'forgotpasswordverification.dart';
 part 'reset_password.dart';
 part 'change_password.dart';
+part 'order_history_page.dart';

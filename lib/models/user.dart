@@ -34,4 +34,4 @@ User mockUser = User(
     phoneNumber: '08123456789',
     email: 'sukrisstiyo29@gmail.com',
     picturePath:
-        'https://i.pinimg.com/474x/8a/f4/7e/8af47e18b14b741f6be2ae499d23fcbe.jpg');
+        '');

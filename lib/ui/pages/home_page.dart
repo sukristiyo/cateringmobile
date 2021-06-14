@@ -14,14 +14,15 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
         body: Stack(
       children: [
-        Container(color: Colors.white),
+        Container(
+          color: Colors.white),
         SafeArea(
             child: Container(
           color: Colors.white,
         )),
         SafeArea(
             child: PageView(
-          controller: PageController(),
+          controller: pageController,
           onPageChanged: (index) {
             setState(() {
               selectedPage = index;
@@ -32,7 +33,7 @@ class _HomePageState extends State<HomePage> {
               child: KukePage(),
             ),
             Center(
-              child: Text("Order"),
+              child: OrderHistoryPage(),
             ),
             Center(
               child: ProfilePage(),

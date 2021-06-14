@@ -9,6 +9,8 @@ class UserLoginServices {
       Constanta.baseApiUrl + "/UserLogin/resetpassword.php";
   static String endpoint6 =
       Constanta.baseApiUrl + "/UserLogin/sendemailverification.php";
+      static String endpoint7 =
+      Constanta.baseApiUrl + "/UserLogin/read.php";
 
   static Future<ApiResponse> authentication(dynamic requestBody) async {
     ApiResponse apiResponse;
@@ -41,6 +43,13 @@ class UserLoginServices {
     ApiResponse apiResponse;
     await BaseApiService.sendPostRequest(endpoint6, "", requestBody)
         .then((value) {
+      apiResponse = value;
+    });
+    return apiResponse;
+  }
+  static Future<ApiResponse> getUserLogin(dynamic requestBody) async {
+    ApiResponse apiResponse;
+    await BaseApiService.sendPostRequest(endpoint7, "", requestBody).then((value) {
       apiResponse = value;
     });
     return apiResponse;

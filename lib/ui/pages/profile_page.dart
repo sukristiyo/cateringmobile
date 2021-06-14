@@ -8,9 +8,24 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   int selectedIndex = 0;
 
+  UserLoginModel userLoginModel = new UserLoginModel();
+  String KEY_EMAIL = "0";
+  bool isLoading = true;
+
+  @override
+  void initState() {
+    readUserData();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return ListView(
+    double width = MediaQuery
+        .of(context)
+        .size
+        .width;
+    return 
+    isLoading? CircularProgressIndicator() :  ListView(
       children: [
         Column(
           children: [
@@ -42,12 +57,12 @@ class _ProfilePageState extends State<ProfilePage> {
                       ),
                     ),
                     Text(
-                      mockUser.name,
+                      'userLoginModel.name',
                       style: GoogleFonts.poppins(
                           fontSize: 18, fontWeight: FontWeight.w500),
                     ),
                     Text(
-                      mockUser.email,
+                      '',
                       style:
                           whiteFontStyle.copyWith(fontWeight: FontWeight.w300),
                     )
@@ -119,5 +134,37 @@ class _ProfilePageState extends State<ProfilePage> {
         ),
       ],
     );
+  }
+
+  void readUserData() async {
+    final storage = FlutterSecureStorage();
+    KEY_EMAIL = await storage.read(
+      key: Constanta.keyEmail
+      );
+    getDataUserLogin();
+  }
+
+  void getDataUserLogin() {
+    setState(() {
+      isLoading = true;
+    });
+    Map map = {
+      "email": KEY_EMAIL,
+    };
+    var requestBody = jsonEncode(map);
+    UserLoginServices.getUserLogin(requestBody).then((value) {
+      //Decode response
+      final result = value;
+      //check status
+      if (result.success == true && result.code == 200) {
+        //parse model and return value
+        userLoginModel = UserLoginModel.fromJson(result.content);
+        setState(() {
+          isLoading = false;
+        });
+      } else {
+        
+      }
+    });
   }
 }

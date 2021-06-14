@@ -1,6 +1,8 @@
 part of 'pages.dart';
 
 class SuccessSignUpPage extends StatelessWidget {
+
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -11,17 +11,51 @@ class _SignInPageState extends State<SignInPage> {
   bool isAuth = false;
   var emailController = new TextEditingController();
   var passwordController = new TextEditingController();
-  String uid;
+  
 
   UserLoginModel userLoginModel = new UserLoginModel();
-
-  // bool isLoading = true;
   ApiResponse apiResponse;
+
+  String uemail;
 
   @override
   void initState() {
     super.initState();
   }
+
+    void authentication() {
+    setState(() {
+      isAuth = true;
+    });
+    UserLoginModel userLoginModel = new UserLoginModel(
+        email: emailController.text, password: passwordController.text);
+
+        var requestBody = jsonEncode(userLoginModel.toJson());
+    print(requestBody);
+    UserLoginServices.authentication(requestBody).then((value) {
+      final result = value;
+      if (result.success == true && result.code == 200) {
+          uemail= userLoginModel.email.toString();
+        _storeUserData();
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => SuccessSignUpPage()),
+        );
+      } else {
+        _showMyDialog();
+      }
+      setState(() {
+        isAuth = false;
+      });
+    }).catchError((error) {
+      setState(() {
+        isAuth = false;
+      });
+      print(error.toString());
+      // String err = error.toString();
+    });
+  }
+
 
   Future<void> _showMyDialog() async {
     return showDialog<void>(
@@ -51,43 +85,23 @@ class _SignInPageState extends State<SignInPage> {
     );
   }
 
-  void _storeLoginData(String email) async {
+  // void _storeLoginData(String email) async {
+  //   final storage = FlutterSecureStorage();
+  //   await storage.write(key: Constanta.keyEmail, value: email);
+  // }
+
+  void _storeUserData() async {
     final storage = FlutterSecureStorage();
-    await storage.write(key: Constanta.keyEmail, value: email);
+    await storage.write(
+      key: Constanta.keyEmail,
+      value: uemail
+    );
+    print(uemail);
   }
 
-  void authentication() {
-    setState(() {
-      isAuth = true;
-    });
-    UserLoginModel userLoginModel = new UserLoginModel(
-        email: emailController.text, password: passwordController.text);
 
-    var requestBody = jsonEncode(userLoginModel.toJson());
-    print(requestBody);
-    UserLoginServices.authentication(requestBody).then((value) {
-      final result = value;
-      if (result.success == true && result.code == 200) {
-        _storeLoginData(emailController.text);
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => SuccessSignUpPage()),
-        );
-      } else {
-        _showMyDialog();
-      }
-      setState(() {
-        isAuth = false;
-      });
-    }).catchError((error) {
-      setState(() {
-        isAuth = false;
-      });
-      print(error.toString());
-      // String err = error.toString();
-    });
-  }
 
+   
   @override
   Widget build(BuildContext context) {
     return GeneralPage(

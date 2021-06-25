@@ -2,7 +2,6 @@ import 'package:catering/models/models.dart';
 import 'package:catering/ui/widgets/widgets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:supercharged/supercharged.dart';
 import 'package:catering/shared/shared.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -13,7 +12,7 @@ import 'package:http/http.dart' as http;
 
 // import 'package:get/utils.dart';
 // import 'package:get/get.dart';
-/// import 'package:flutter_spinkit/flutter_spinkit.dart';
+//import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 part 'package:catering/services/baseapiservices.dart';
 part 'package:catering/services/userloginservices.dart';
@@ -37,3 +36,6 @@ part 'forgotpasswordverification.dart';
 part 'reset_password.dart';
 part 'change_password.dart';
 part 'order_history_page.dart';
+part 'change_profile.dart';
+part 'change_password_profile.dart';
+part 'kuke_details_page.dart';

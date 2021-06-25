@@ -115,7 +115,7 @@ class _SignUpPageState extends State<SignUpPage> {
             padding: EdgeInsets.symmetric(horizontal: 10),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
-                border: Border.all(color: "FFC700".toColor())),
+                border: Border.all(color: mainColor)),
             child: TextField(
               controller: nameController,
               style: TextStyle(color: Colors.black),
@@ -139,7 +139,7 @@ class _SignUpPageState extends State<SignUpPage> {
             padding: EdgeInsets.symmetric(horizontal: 10),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
-                border: Border.all(color: "FFC700".toColor())),
+                border: Border.all(color: mainColor)),
             child: TextField(
               controller: emailController,
               style: TextStyle(color: Colors.black),
@@ -163,7 +163,7 @@ class _SignUpPageState extends State<SignUpPage> {
             padding: EdgeInsets.symmetric(horizontal: 10),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
-                border: Border.all(color: "FFC700".toColor())),
+                border: Border.all(color: mainColor)),
             child: TextField(
               obscureText: true,
               controller: passwordController,
@@ -188,7 +188,7 @@ class _SignUpPageState extends State<SignUpPage> {
             padding: EdgeInsets.symmetric(horizontal: 10),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
-                border: Border.all(color: "FFC700".toColor())),
+                border: Border.all(color: mainColor)),
             child: TextField(
               controller: phoneController,
               style: TextStyle(color: Colors.black),
@@ -212,7 +212,7 @@ class _SignUpPageState extends State<SignUpPage> {
             padding: EdgeInsets.symmetric(horizontal: 10),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
-                border: Border.all(color: "FFC700".toColor())),
+                border: Border.all(color: mainColor)),
             child: TextField(
               controller: addressController,
               style: TextStyle(color: Colors.black),
@@ -236,7 +236,7 @@ class _SignUpPageState extends State<SignUpPage> {
             padding: EdgeInsets.symmetric(horizontal: 10),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
-                border: Border.all(color: "FFC700".toColor())),
+                border: Border.all(color: mainColor)),
             child: TextField(
               controller: houseController,
               style: TextStyle(color: Colors.black),
@@ -260,7 +260,7 @@ class _SignUpPageState extends State<SignUpPage> {
             padding: EdgeInsets.symmetric(horizontal: 10),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
-                border: Border.all(color: "FFC700".toColor())),
+                border: Border.all(color: mainColor)),
             child: TextField(
               controller: cityController,
               style: TextStyle(color: Colors.black),

@@ -8,6 +8,17 @@ class KukePage extends StatefulWidget {
 class _KukePageState extends State<KukePage> {
   int selectedIndex = 0;
 
+  UserLoginModel userLoginModel = new UserLoginModel();
+
+  String userId = "0";
+  bool isLoading = false;
+
+  @override
+  void initState() {
+    readUserData();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     double listItemWidth =
@@ -113,5 +124,34 @@ class _KukePageState extends State<KukePage> {
         )
       ],
     );
+  }
+
+  void readUserData() async {
+    final storage = FlutterSecureStorage();
+    userId = await storage.read(key: Constanta.keyUserId);
+    print(userId);
+    getDataUserLogin();
+  }
+
+  void getDataUserLogin() {
+    setState(() {
+      isLoading = true;
+    });
+    Map map = {
+      "id": userId,
+    };
+    var requestBody = jsonEncode(map);
+    UserLoginServices.getUserLogin(requestBody).then((value) {
+      //Decode response
+      final result = value;
+      //check status
+      if (result.success == true && result.code == 200) {
+        //parse model and return value
+        userLoginModel = UserLoginModel.fromJson(result.content);
+        setState(() {
+          isLoading = false;
+        });
+      } else {}
+    });
   }
 }

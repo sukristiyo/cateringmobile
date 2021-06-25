@@ -11,36 +11,37 @@ class _SignInPageState extends State<SignInPage> {
   bool isAuth = false;
   var emailController = new TextEditingController();
   var passwordController = new TextEditingController();
-  
 
   UserLoginModel userLoginModel = new UserLoginModel();
   ApiResponse apiResponse;
 
-  String uemail;
+  String uid;
 
   @override
   void initState() {
     super.initState();
   }
 
-    void authentication() {
+  void authentication() {
     setState(() {
       isAuth = true;
     });
     UserLoginModel userLoginModel = new UserLoginModel(
-        email: emailController.text, password: passwordController.text);
+      email: emailController.text,
+      password: passwordController.text,
+    );
 
-        var requestBody = jsonEncode(userLoginModel.toJson());
-    print(requestBody);
+    var requestBody = jsonEncode(userLoginModel.toJson());
     UserLoginServices.authentication(requestBody).then((value) {
       final result = value;
       if (result.success == true && result.code == 200) {
-          uemail= userLoginModel.email.toString();
+        userLoginModel = UserLoginModel.fromJson(result.content);
+        uid = userLoginModel.id.toString();
+        print(uid);
         _storeUserData();
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => SuccessSignUpPage()),
-        );
+        emailController.text = "";
+        passwordController.text = "";
+        _successDialog();
       } else {
         _showMyDialog();
       }
@@ -56,6 +57,36 @@ class _SignInPageState extends State<SignInPage> {
     });
   }
 
+  Future<void> _successDialog() async {
+    return showDialog<void>(
+        context: context,
+        barrierDismissible: false, // user must tap button
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text("Login Success"),
+            content: SingleChildScrollView(
+              child: ListBody(
+                children: <Widget>[
+                  Text("Welcome to the System!"),
+                  Text("Lets Start!"),
+                  Text(uid),
+                ],
+              ),
+            ),
+            actions: <Widget>[
+              TextButton(
+                child: Text("OK"),
+                onPressed: () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => HomePage()),
+                  );
+                },
+              ),
+            ],
+          );
+        });
+  }
 
   Future<void> _showMyDialog() async {
     return showDialog<void>(
@@ -89,19 +120,24 @@ class _SignInPageState extends State<SignInPage> {
   //   final storage = FlutterSecureStorage();
   //   await storage.write(key: Constanta.keyEmail, value: email);
   // }
+  void sendRequestGetDataUserLogin() {
+    UserLoginModel userLoginModel = new UserLoginModel();
+    var requestBody = jsonEncode(userLoginModel.toJson());
+    UserLoginServices.getUserLogin(requestBody).then((value) {
+      final result = value;
+      if (result.success == true && result.code == 200) {
+      } else {}
+    }).catchError((error) {
+      String err = error.toString();
+    });
+  }
 
   void _storeUserData() async {
     final storage = FlutterSecureStorage();
-    await storage.write(
-      key: Constanta.keyEmail,
-      value: uemail
-    );
-    print(uemail);
+    await storage.write(key: Constanta.keyUserId, value: uid);
+    print(uid);
   }
 
-
-
-   
   @override
   Widget build(BuildContext context) {
     return GeneralPage(
@@ -123,7 +159,7 @@ class _SignInPageState extends State<SignInPage> {
             padding: EdgeInsets.symmetric(horizontal: 10),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
-                border: Border.all(color: "FFC700".toColor())),
+                border: Border.all(color: mainColor)),
             child: TextField(
               controller: emailController,
               style: TextStyle(color: Colors.black),
@@ -148,7 +184,7 @@ class _SignInPageState extends State<SignInPage> {
             padding: EdgeInsets.symmetric(horizontal: 10),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
-                border: Border.all(color: "FFC700".toColor())),
+                border: Border.all(color: mainColor)),
             child: TextField(
               obscureText: true,
               controller: passwordController,
@@ -214,11 +250,11 @@ class _SignInPageState extends State<SignInPage> {
             height: 45,
             padding: EdgeInsets.symmetric(horizontal: defaultMargin),
             child:
-                // isLoading
-                //     ? SpinKitFadingCircle(
-                //         size: 45,
-                //         color: whiteColor,
-                //       ) :
+                //  isLoading
+                //      ? SpinKitFadingCircle(
+                //          size: 45,
+                //          color: whiteColor,
+                //        ) :
                 RaisedButton(
               onPressed: () {
                 Navigator.pushNamed(context, '/sign_up_page');

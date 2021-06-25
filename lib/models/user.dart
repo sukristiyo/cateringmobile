@@ -34,4 +34,4 @@ User mockUser = User(
     phoneNumber: '08123456789',
     email: 'sukrisstiyo29@gmail.com',
     picturePath:
-        '');
+        'https://i.ibb.co/k6hbQP4/Whats-App-Image-2021-06-15-at-18-16-05.jpg');

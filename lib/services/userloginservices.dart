@@ -30,6 +30,15 @@ class UserLoginServices {
     return apiResponse;
   }
 
+    static Future<ApiResponse> updateData(dynamic requestBody) async {
+    ApiResponse apiResponse;
+    await BaseApiService.sendPostRequest(endpoint3, "", requestBody)
+        .then((value) {
+      apiResponse = value;
+    });
+    return apiResponse;
+  }
+
   static Future<ApiResponse> changePassword(dynamic requestBody) async {
     ApiResponse apiResponse;
     await BaseApiService.sendPostRequest(endpoint5, "", requestBody)

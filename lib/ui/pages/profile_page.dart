@@ -9,8 +9,9 @@ class _ProfilePageState extends State<ProfilePage> {
   int selectedIndex = 0;
 
   UserLoginModel userLoginModel = new UserLoginModel();
-  String KEY_EMAIL = "0";
+  String userId = "0";
   bool isLoading = true;
+  bool isAuth = false;
 
   @override
   void initState() {
@@ -20,12 +21,8 @@ class _ProfilePageState extends State<ProfilePage> {
 
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery
-        .of(context)
-        .size
-        .width;
-    return 
-    isLoading? CircularProgressIndicator() :  ListView(
+    double width = MediaQuery.of(context).size.width;
+    return isLoading ? CircularProgressIndicator() : ListView(
       children: [
         Column(
           children: [
@@ -49,22 +46,21 @@ class _ProfilePageState extends State<ProfilePage> {
                               image: AssetImage('assets/photo_border.png'))),
                       child: Container(
                         decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          image: DecorationImage(
+                            shape: BoxShape.circle,
+                            image: DecorationImage(
                                 image: NetworkImage(mockUser.picturePath),
-                                fit: BoxFit.cover)
-                        ),
+                                fit: BoxFit.cover)),
                       ),
                     ),
                     Text(
-                      'userLoginModel.name',
+                      userLoginModel.name,
                       style: GoogleFonts.poppins(
                           fontSize: 18, fontWeight: FontWeight.w500),
                     ),
                     Text(
-                      '',
-                      style:
-                          whiteFontStyle.copyWith(fontWeight: FontWeight.w300),
+                      userLoginModel.email,
+                      style: GoogleFonts.poppins(
+                          fontSize: 18, fontWeight: FontWeight.w300),
                     )
                   ],
                 )),
@@ -74,56 +70,70 @@ class _ProfilePageState extends State<ProfilePage> {
               color: Colors.white,
               child: Column(
                 children: [
-                  CustomTabBar(
-                    titles: ["Account", "KukeApp"],
-                    selectedIndex: selectedIndex,
-                    onTap: (index) {
-                      setState(() {
-                        selectedIndex = index;
-                      });
+                  // CustomTabBar(
+                  //   titles: ["Account"],
+                  //   selectedIndex: selectedIndex,
+                  //   onTap: (index) {
+                  //     setState(() {
+                  //       selectedIndex = index;
+                  //     });
+                  //   },
+                  // ),
+                  // SizedBox(
+                  //   height: 12,
+                  // ),
+                  Container(
+            width: double.infinity,
+            margin: EdgeInsets.only(top: 5),
+            height: 45,
+            padding: EdgeInsets.symmetric(horizontal: defaultMargin),
+            child: isAuth
+                ? CircularProgressIndicator()
+                : RaisedButton(
+                  onPressed: () {
+                      Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) =>
+                          ChangeProfileScreen(userLoginModel: userLoginModel))
+                  );
                     },
+                    elevation: 0,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8)),
+                    color: mainColor,
+                    child: Text(
+                      'Change Profile',
+                      style: GoogleFonts.poppins(
+                          color: Colors.black, fontWeight: FontWeight.w500),
+                    ),
                   ),
-                  SizedBox(
-                    height: 16,
+          ),
+          Container(
+            width: double.infinity,
+            margin: EdgeInsets.only(top: 5),
+            height: 45,
+            padding: EdgeInsets.symmetric(horizontal: defaultMargin),
+            child: isAuth
+                ? CircularProgressIndicator()
+                : RaisedButton(
+                    onPressed: () {
+                      Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) =>
+                          ChangePasswordScreen(userLoginModel: userLoginModel))
+                  );
+                    },
+                    elevation: 0,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8)),
+                    color: mainColor,
+                    child: Text(
+                      'Change Password',
+                      style: GoogleFonts.poppins(
+                          color: Colors.black, fontWeight: FontWeight.w500),
+                    ),
                   ),
-                  Column(
-                    children: ((selectedIndex == 0)
-                            ? [
-                                'Edit Profile',
-                                'Forgot Password',
-                              ]
-                            : [
-                                'Rate App',
-                                'Help Center',
-                                'Privacy & Policy',
-                                'Term & Condition'
-                              ])
-                        .map((e) => Padding(
-                              padding: EdgeInsets.only(
-                                  bottom: 16,
-                                  left: defaultMargin,
-                                  right: defaultMargin),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    e,
-                                    style: blackFontStyle3,
-                                  ),
-                                  SizedBox(
-                                    height: 24,
-                                    width: 24,
-                                    child: Image.asset(
-                                      'assets/right_arrow.png',
-                                      fit: BoxFit.contain,
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ))
-                        .toList(),
-                  )
+          ),
                 ],
               ),
             ),
@@ -138,9 +148,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
   void readUserData() async {
     final storage = FlutterSecureStorage();
-    KEY_EMAIL = await storage.read(
-      key: Constanta.keyEmail
-      );
+    userId = await storage.read(key: Constanta.keyUserId);
     getDataUserLogin();
   }
 
@@ -149,8 +157,9 @@ class _ProfilePageState extends State<ProfilePage> {
       isLoading = true;
     });
     Map map = {
-      "email": KEY_EMAIL,
+      "id": userId,
     };
+    
     var requestBody = jsonEncode(map);
     UserLoginServices.getUserLogin(requestBody).then((value) {
       //Decode response
@@ -163,7 +172,7 @@ class _ProfilePageState extends State<ProfilePage> {
           isLoading = false;
         });
       } else {
-        
+        print(userId);
       }
     });
   }

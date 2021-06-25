@@ -35,7 +35,7 @@ class _AddressPageState extends State<AddressPage> {
             padding: EdgeInsets.symmetric(horizontal: 10),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
-                border: Border.all(color: "FFC700".toColor())),
+                border: Border.all(color: mainColor)),
             child: TextField(
               controller: phoneController,
               style: TextStyle(color: Colors.black),
@@ -59,7 +59,7 @@ class _AddressPageState extends State<AddressPage> {
             padding: EdgeInsets.symmetric(horizontal: 10),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
-                border: Border.all(color: "FFC700".toColor())),
+                border: Border.all(color: mainColor)),
             child: TextField(
               controller: addressController,
               style: TextStyle(color: Colors.black),
@@ -83,7 +83,7 @@ class _AddressPageState extends State<AddressPage> {
             padding: EdgeInsets.symmetric(horizontal: 10),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
-                border: Border.all(color: "FFC700".toColor())),
+                border: Border.all(color:mainColor)),
             child: TextField(
               controller: houseController,
               style: TextStyle(color: Colors.black),
@@ -107,7 +107,7 @@ class _AddressPageState extends State<AddressPage> {
             padding: EdgeInsets.symmetric(horizontal: 10),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
-                border: Border.all(color: "FFC700".toColor())),
+                border: Border.all(color: mainColor)),
             child: DropdownButton(
                 // focusColor: Colors.blue,
                 isExpanded: true,

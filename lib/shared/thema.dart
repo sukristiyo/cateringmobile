@@ -5,6 +5,9 @@ Color greyColor = "8d92a3".toColor();
 Color purpleColor = "260868".toColor();
 Color whiteColor = "FFFFFF".toColor();
 Color blackColor = "000000".toColor();
+Color backGroundColor = "260868".toColor();
+Color greenColor = "4CD964".toColor();
+Color lightGreyColor = "F4F4F4".toColor();
 
 TextStyle whiteFontStyle = GoogleFonts.poppins().copyWith(color: whiteColor);
 TextStyle whiteFontStyle1 = GoogleFonts.poppins()

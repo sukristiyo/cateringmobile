@@ -39,4 +39,3 @@ part 'change_password.dart';
 part 'change_profile.dart';
 part 'change_password_profile.dart';
 part 'kuke_details_page.dart';
-part 'profile_pages.dart';

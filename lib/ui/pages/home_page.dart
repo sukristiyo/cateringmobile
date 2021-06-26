@@ -33,7 +33,7 @@ class _HomePageState extends State<HomePage> {
               child: KukePage(),
             ),
             Center(
-              child: OrderHistoryPage(),
+              child: Text('text'),
             ),
             Center(
               child: ProfilePage(),

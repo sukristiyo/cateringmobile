@@ -32,7 +32,8 @@ class _ProfilePageState extends State<ProfilePage> {
                 height: 220,
                 margin: EdgeInsets.only(bottom: defaultMargin),
                 width: double.infinity,
-                color: Colors.white,
+                decoration: BoxDecoration(borderRadius: BorderRadius.vertical(bottom: Radius.circular(20)),
+                color: mainColor),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

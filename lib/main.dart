@@ -24,7 +24,6 @@ class Ecatering extends StatelessWidget {
           '/home_page': (BuildContext context) => HomePage(),
           '/resetpassword': (BuildContext context) => ResetPasswordScreen(),
           '/change_password': (BuildContext context) => ResetPassword(),
-          '/order_history_page': (BuildContext context) => OrderHistoryPage(),
         });
   }
 }

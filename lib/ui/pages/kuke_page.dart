@@ -70,7 +70,12 @@ class _KukePageState extends State<KukePage> {
                                       ? defaultMargin
                                       : 0,
                                   right: defaultMargin),
-                              child: FoodCard(e),
+                              child: GestureDetector(
+                                  onTap: () {
+                                    Navigator.pushNamed(
+                                        context, '/description_page');
+                                  },
+                                  child: FoodCard(e)),
                             ))
                         .toList(),
                   )

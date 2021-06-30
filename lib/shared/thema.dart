@@ -23,4 +23,7 @@ TextStyle blackFontStyle2 = GoogleFonts.poppins()
     .copyWith(color: Colors.black, fontSize: 16, fontWeight: FontWeight.w500);
 TextStyle blackFontStyle3 = GoogleFonts.poppins().copyWith(color: Colors.black);
 
+TextStyle yellowFontStyle1 = GoogleFonts.poppins().copyWith(
+    color: "FFC700".toColor(), fontSize: 22, fontWeight: FontWeight.w500);
+
 const double defaultMargin = 24;

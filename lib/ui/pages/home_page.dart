@@ -14,8 +14,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
         body: Stack(
       children: [
-        Container(
-          color: Colors.white),
+        Container(color: Colors.white),
         SafeArea(
             child: Container(
           color: Colors.white,
@@ -33,7 +32,8 @@ class _HomePageState extends State<HomePage> {
               child: KukePage(),
             ),
             Center(
-              child: Text('text'),
+              child: History(),
+              // child: OrderHistoryPage(),
             ),
             Center(
               child: ProfilePage(),

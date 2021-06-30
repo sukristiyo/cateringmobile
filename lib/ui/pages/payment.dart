@@ -14,7 +14,7 @@ class _PaymentState extends State<Payment> {
           leading: IconButton(
             icon: Icon(Icons.arrow_back_ios, color: CupertinoColors.black),
             onPressed: () {
-              Navigator.pushNamed(context, '/HomeScreenPage');
+              Navigator.pushNamed(context, '/home_page');
             },
           ),
           title: Text(
@@ -172,7 +172,7 @@ class _PaymentState extends State<Payment> {
                     ],
                   ),
                 ),
-                SizedBox(height: 75),
+                SizedBox(height: 25),
                 // DONE BUTTON
                 Container(
                   width: 300,
@@ -183,7 +183,7 @@ class _PaymentState extends State<Payment> {
                     // width: 170,
                     color: mainColor,
                     onPressed: () {
-                      Navigator.pushNamed(context, '/HomeScreenPage');
+                      Navigator.pushNamed(context, '/home_page');
                     },
                     padding: EdgeInsets.only(bottom: 10, top: 10),
                     child: Text(

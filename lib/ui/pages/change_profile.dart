@@ -64,8 +64,7 @@ class _ChangeProfileScreenState extends State<ChangeProfileScreen> {
                         filled: true,
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(8)),
-                          borderSide:
-                              BorderSide(color: Colors.black, width: 2),
+                          borderSide: BorderSide(color: Colors.black, width: 2),
                         ),
                         hintText: userLoginModel.email,
                         labelText: "Email Address",
@@ -91,11 +90,12 @@ class _ChangeProfileScreenState extends State<ChangeProfileScreen> {
                         filled: true,
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(8)),
-                          borderSide:
-                              BorderSide(color: Colors.black, width: 2),
+                          borderSide: BorderSide(color: Colors.black, width: 2),
                         ),
                         hintText: userLoginModel.name,
                         labelText: "Full Name",
+                        labelStyle: yellowFontStyle1,
+                        // hintStyle: blackFontStyle,
                         prefixIcon: Icon(Icons.person),
                       ),
                       style: TextStyle(color: Colors.black87),
@@ -119,8 +119,7 @@ class _ChangeProfileScreenState extends State<ChangeProfileScreen> {
                         filled: true,
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(8)),
-                          borderSide:
-                              BorderSide(color: Colors.black, width: 2),
+                          borderSide: BorderSide(color: Colors.black, width: 2),
                         ),
                         hintText: userLoginModel.phoneNumber,
                         labelText: "Phone Number",

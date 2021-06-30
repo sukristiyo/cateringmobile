@@ -10,6 +10,9 @@ import 'package:flutter/services.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
+import '../../shared/shared.dart';
+import '../../shared/shared.dart';
+
 // import 'package:get/utils.dart';
 // import 'package:get/get.dart';
 //import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -40,3 +43,8 @@ part 'change_profile.dart';
 part 'change_password_profile.dart';
 part 'kuke_details_page.dart';
 part 'payment.dart';
+part 'order_history_page.dart';
+part 'description_page.dart';
+part 'checkout.dart';
+part 'history.dart';
+part 'my_cart.dart';

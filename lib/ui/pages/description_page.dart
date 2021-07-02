@@ -6,6 +6,8 @@ class DescriptionPage extends StatefulWidget {
 }
 
 class _DescriptionPageState extends State<DescriptionPage> {
+  var counter = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -84,6 +86,11 @@ class _DescriptionPageState extends State<DescriptionPage> {
                             child: IconButton(
                               icon: Icon(Icons.remove_circle_outline, size: 30),
                               onPressed: () {
+                                setState(() {
+                                  if (counter > 0) {
+                                    counter--;
+                                  }
+                                });
                                 print('remove button pressed');
                               },
                             ),
@@ -91,7 +98,7 @@ class _DescriptionPageState extends State<DescriptionPage> {
                           Container(
                             margin: EdgeInsets.symmetric(horizontal: 3),
                             child: Text(
-                              '14',
+                              counter.toString(),
                               style: GoogleFonts.poppins(
                                 color: CupertinoColors.black,
                                 fontSize: 16,
@@ -103,6 +110,9 @@ class _DescriptionPageState extends State<DescriptionPage> {
                             child: IconButton(
                               icon: Icon(Icons.add_circle_outline, size: 30),
                               onPressed: () {
+                                setState(() {
+                                  counter++;
+                                });
                                 print('add button pressed');
                               },
                             ),

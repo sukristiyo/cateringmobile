@@ -17,74 +17,81 @@ class _ResetPasswordState extends State<ResetPassword> {
 
   @override
   Widget build(BuildContext context) {
-    return GeneralPage(
-      title: 'Create New Password',
-      subtitle: "Please enter new password",
-      onBackButtonPressed: () {
-        Navigator.pushNamed(context, '/sign_in_page');
+    // Penambahan onTap pada General Page.
+    //sehingga, ketika kita menekan area selain textfield, maka keyboard akan kembali menutup
+    return GestureDetector(
+      onTap: () {
+        FocusScope.of(context).unfocus();
       },
-      child: Form(
-        key: _formKey,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            SizedBox(height: 15.0),
-            new Icon(Icons.lock_open, size: 150.0, color: Colors.black),
-            Text("Please Change Your Password",
-                textAlign: TextAlign.center, style: TextStyle(fontSize: 16)),
-            TextFormField(
-              controller: passwordController,
-              obscureText: true,
-              //validator: _validateEmail,
-              decoration: InputDecoration(
-                border: InputBorder.none,
-                fillColor: Colors.white,
-                filled: true,
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                  borderSide: BorderSide(color: mainColor, width: 2),
-                ),
-                hintText: "Type new password",
-                prefixIcon: Icon(Icons.lock, color: Colors.black),
-              ),
-            ),
-            Text(""),
-            TextFormField(
-              controller: rePasswordController,
-              obscureText: true,
-              //validator: _validateEmail,
-              decoration: InputDecoration(
-                border: InputBorder.none,
-                fillColor: Colors.white,
-                filled: true,
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                  borderSide: BorderSide(color: mainColor, width: 2),
-                ),
-                hintText: "Retype new password",
-                prefixIcon: Icon(Icons.lock, color: Colors.black),
-              ),
-            ),
-            Text(""),
-            ButtonTheme(
-                buttonColor: mainColor,
-                minWidth: double.infinity,
-                padding: EdgeInsets.symmetric(horizontal: 10),
-                height: 45,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(22.0),
-                ),
-                child: RaisedButton(
-                  onPressed: () {
-                    resetPassword();
-                  },
-                  child: Text(
-                    "Reset Password",
-                    style: TextStyle(color: blackColor, fontSize: 18.0),
+      child: GeneralPage(
+        title: 'Create New Password',
+        subtitle: "Please enter new password",
+        onBackButtonPressed: () {
+          Navigator.pushNamed(context, '/sign_in_page');
+        },
+        child: Form(
+          key: _formKey,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              SizedBox(height: 15.0),
+              new Icon(Icons.lock_open, size: 150.0, color: Colors.black),
+              Text("Please Change Your Password",
+                  textAlign: TextAlign.center, style: TextStyle(fontSize: 16)),
+              TextFormField(
+                controller: passwordController,
+                obscureText: true,
+                //validator: _validateEmail,
+                decoration: InputDecoration(
+                  border: InputBorder.none,
+                  fillColor: Colors.white,
+                  filled: true,
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                    borderSide: BorderSide(color: mainColor, width: 2),
                   ),
-                )),
-          ],
+                  hintText: "Type new password",
+                  prefixIcon: Icon(Icons.lock, color: Colors.black),
+                ),
+              ),
+              Text(""),
+              TextFormField(
+                controller: rePasswordController,
+                obscureText: true,
+                //validator: _validateEmail,
+                decoration: InputDecoration(
+                  border: InputBorder.none,
+                  fillColor: Colors.white,
+                  filled: true,
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                    borderSide: BorderSide(color: mainColor, width: 2),
+                  ),
+                  hintText: "Retype new password",
+                  prefixIcon: Icon(Icons.lock, color: Colors.black),
+                ),
+              ),
+              Text(""),
+              ButtonTheme(
+                  buttonColor: mainColor,
+                  minWidth: double.infinity,
+                  padding: EdgeInsets.symmetric(horizontal: 10),
+                  height: 45,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(22.0),
+                  ),
+                  child: RaisedButton(
+                    onPressed: () {
+                      resetPassword();
+                    },
+                    child: Text(
+                      "Reset Password",
+                      style: TextStyle(color: blackColor, fontSize: 18.0),
+                    ),
+                  )),
+            ],
+          ),
         ),
       ),
     );

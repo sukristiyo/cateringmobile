@@ -7,6 +7,9 @@ class DescriptionPage extends StatefulWidget {
 
 class _DescriptionPageState extends State<DescriptionPage> {
   var counter = 0;
+  var stock = 25;
+  var price = 35000;
+  var totalPrice = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -90,6 +93,7 @@ class _DescriptionPageState extends State<DescriptionPage> {
                                   if (counter > 0) {
                                     counter--;
                                   }
+                                  totalPrice = price * counter;
                                 });
                                 print('remove button pressed');
                               },
@@ -111,7 +115,10 @@ class _DescriptionPageState extends State<DescriptionPage> {
                               icon: Icon(Icons.add_circle_outline, size: 30),
                               onPressed: () {
                                 setState(() {
-                                  counter++;
+                                  if (counter <= stock) {
+                                    counter++;
+                                  }
+                                  totalPrice = price * counter;
                                 });
                                 print('add button pressed');
                               },
@@ -145,7 +152,6 @@ class _DescriptionPageState extends State<DescriptionPage> {
                       textAlign: TextAlign.start,
                     ),
                   ),
-                  // Baris keEmpat = Total Price
                   Container(
                     margin: EdgeInsets.only(top: 5, bottom: 10),
                     child: Text(
@@ -157,7 +163,31 @@ class _DescriptionPageState extends State<DescriptionPage> {
                       textAlign: TextAlign.start,
                     ),
                   ),
-                  SizedBox(height: 30),
+                  // Baris ke-empat, price per item
+                  Container(
+                    margin: EdgeInsets.only(top: 10, bottom: 5),
+                    child: Text(
+                      'Price per item',
+                      style: GoogleFonts.poppins(
+                        color: Colors.black,
+                        fontSize: 14,
+                      ),
+                      textAlign: TextAlign.start,
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(top: 5, bottom: 10),
+                    child: Text(
+                      'IDR ' + price.toString(),
+                      style: GoogleFonts.poppins(
+                        color: greyColor,
+                        fontSize: 14,
+                      ),
+                      textAlign: TextAlign.start,
+                    ),
+                  ),
+                  SizedBox(height: 15),
+                  // Baris keEmpat = Total Price
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -173,7 +203,7 @@ class _DescriptionPageState extends State<DescriptionPage> {
                             textAlign: TextAlign.start,
                           ),
                           Text(
-                            'IDR 1.289.900',
+                            'IDR ' + totalPrice.toString(),
                             style: GoogleFonts.poppins(
                               color: Colors.black,
                               fontSize: 18,

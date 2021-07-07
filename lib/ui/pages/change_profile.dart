@@ -40,119 +40,129 @@ class _ChangeProfileScreenState extends State<ChangeProfileScreen> {
   Widget build(BuildContext context) {
     return isLoading
         ? CircularProgressIndicator()
-        : GeneralPage(
-            title: 'Profile',
-            subtitle: "Edit the fields below to change profile data",
-            onBackButtonPressed: () {
-              Navigator.pop(context);
+        // Penambahan onTap pada General Page.
+        //sehingga, ketika kita menekan area selain textfield, maka keyboard akan kembali menutup
+        : GestureDetector(
+            onTap: () {
+              FocusScope.of(context).unfocus();
             },
-            child: Form(
-              key: _formKey,
-              child: Column(
-                children: [
-                  Container(margin: EdgeInsets.all(8)),
-                  Container(
-                    width: double.infinity,
-                    margin: EdgeInsets.symmetric(horizontal: defaultMargin),
-                    padding: EdgeInsets.symmetric(horizontal: 10),
-                    child: TextField(
-                      controller: emailController,
-                      readOnly: true,
-                      decoration: InputDecoration(
-                        border: InputBorder.none,
-                        fillColor: Colors.white,
-                        filled: true,
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(8)),
-                          borderSide: BorderSide(color: Colors.black, width: 2),
+            child: GeneralPage(
+              title: 'Profile',
+              subtitle: "Edit the fields below to change profile data",
+              onBackButtonPressed: () {
+                Navigator.pop(context);
+              },
+              child: Form(
+                key: _formKey,
+                child: Column(
+                  children: [
+                    Container(margin: EdgeInsets.all(8)),
+                    Container(
+                      width: double.infinity,
+                      margin: EdgeInsets.symmetric(horizontal: defaultMargin),
+                      padding: EdgeInsets.symmetric(horizontal: 10),
+                      child: TextField(
+                        controller: emailController,
+                        readOnly: true,
+                        decoration: InputDecoration(
+                          border: InputBorder.none,
+                          fillColor: Colors.white,
+                          filled: true,
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(8)),
+                            borderSide:
+                                BorderSide(color: Colors.black, width: 2),
+                          ),
+                          hintText: userLoginModel.email,
+                          labelText: "Email Address",
+                          prefixIcon: Icon(Icons.mail),
                         ),
-                        hintText: userLoginModel.email,
-                        labelText: "Email Address",
-                        prefixIcon: Icon(Icons.mail),
+                        style: TextStyle(color: Colors.black87),
                       ),
-                      style: TextStyle(color: Colors.black87),
                     ),
-                  ),
-                  Container(
-                    width: double.infinity,
-                    margin:
-                        EdgeInsets.fromLTRB(defaultMargin, 5, defaultMargin, 5),
-                  ),
-                  Container(
-                    width: double.infinity,
-                    margin: EdgeInsets.symmetric(horizontal: defaultMargin),
-                    padding: EdgeInsets.symmetric(horizontal: 10),
-                    child: TextField(
-                      controller: nameController,
-                      decoration: InputDecoration(
-                        border: InputBorder.none,
-                        fillColor: Colors.white,
-                        filled: true,
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(8)),
-                          borderSide: BorderSide(color: Colors.black, width: 2),
+                    Container(
+                      width: double.infinity,
+                      margin: EdgeInsets.fromLTRB(
+                          defaultMargin, 5, defaultMargin, 5),
+                    ),
+                    Container(
+                      width: double.infinity,
+                      margin: EdgeInsets.symmetric(horizontal: defaultMargin),
+                      padding: EdgeInsets.symmetric(horizontal: 10),
+                      child: TextField(
+                        controller: nameController,
+                        decoration: InputDecoration(
+                          border: InputBorder.none,
+                          fillColor: Colors.white,
+                          filled: true,
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(8)),
+                            borderSide:
+                                BorderSide(color: Colors.black, width: 2),
+                          ),
+                          hintText: userLoginModel.name,
+                          labelText: "Full Name",
+                          labelStyle: yellowFontStyle1,
+                          // hintStyle: blackFontStyle,
+                          prefixIcon: Icon(Icons.person),
                         ),
-                        hintText: userLoginModel.name,
-                        labelText: "Full Name",
-                        labelStyle: yellowFontStyle1,
-                        // hintStyle: blackFontStyle,
-                        prefixIcon: Icon(Icons.person),
+                        style: TextStyle(color: Colors.black87),
                       ),
-                      style: TextStyle(color: Colors.black87),
                     ),
-                  ),
-                  Container(
-                    width: double.infinity,
-                    margin:
-                        EdgeInsets.fromLTRB(defaultMargin, 5, defaultMargin, 5),
-                  ),
-                  Container(
-                    width: double.infinity,
-                    margin: EdgeInsets.symmetric(horizontal: defaultMargin),
-                    padding: EdgeInsets.symmetric(horizontal: 10),
-                    child: TextField(
-                      keyboardType: TextInputType.number,
-                      controller: phoneController,
-                      decoration: InputDecoration(
-                        border: InputBorder.none,
-                        fillColor: Colors.white,
-                        filled: true,
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(8)),
-                          borderSide: BorderSide(color: Colors.black, width: 2),
+                    Container(
+                      width: double.infinity,
+                      margin: EdgeInsets.fromLTRB(
+                          defaultMargin, 5, defaultMargin, 5),
+                    ),
+                    Container(
+                      width: double.infinity,
+                      margin: EdgeInsets.symmetric(horizontal: defaultMargin),
+                      padding: EdgeInsets.symmetric(horizontal: 10),
+                      child: TextField(
+                        keyboardType: TextInputType.number,
+                        controller: phoneController,
+                        decoration: InputDecoration(
+                          border: InputBorder.none,
+                          fillColor: Colors.white,
+                          filled: true,
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(8)),
+                            borderSide:
+                                BorderSide(color: Colors.black, width: 2),
+                          ),
+                          hintText: userLoginModel.phoneNumber,
+                          labelText: "Phone Number",
+                          prefixIcon: Icon(Icons.phone_android),
                         ),
-                        hintText: userLoginModel.phoneNumber,
-                        labelText: "Phone Number",
-                        prefixIcon: Icon(Icons.phone_android),
+                        style: TextStyle(color: Colors.black87),
                       ),
-                      style: TextStyle(color: Colors.black87),
                     ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(
-                        top: 24, left: defaultMargin, right: defaultMargin),
-                    padding: EdgeInsets.symmetric(horizontal: defaultMargin),
-                    child: ButtonTheme(
-                      buttonColor: mainColor,
-                      minWidth: double.infinity,
-                      height: 45,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(22),
-                      ),
-                      child: isLoading
-                          ? CircularProgressIndicator()
-                          : RaisedButton(
-                              padding: EdgeInsets.symmetric(horizontal: 10),
-                              onPressed: () => updateProfile(),
-                              child: Text(
-                                "APPLY",
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 18.0),
+                    Container(
+                      margin: EdgeInsets.only(
+                          top: 24, left: defaultMargin, right: defaultMargin),
+                      padding: EdgeInsets.symmetric(horizontal: defaultMargin),
+                      child: ButtonTheme(
+                        buttonColor: mainColor,
+                        minWidth: double.infinity,
+                        height: 45,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(22),
+                        ),
+                        child: isLoading
+                            ? CircularProgressIndicator()
+                            : RaisedButton(
+                                padding: EdgeInsets.symmetric(horizontal: 10),
+                                onPressed: () => updateProfile(),
+                                child: Text(
+                                  "APPLY",
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 18.0),
+                                ),
                               ),
-                            ),
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           );

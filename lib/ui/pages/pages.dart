@@ -9,6 +9,7 @@ import 'dart:async';
 import 'package:flutter/services.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:intl/intl.dart';
 
 import '../../shared/shared.dart';
 import '../../shared/shared.dart';
@@ -48,3 +49,6 @@ part 'description_page.dart';
 part 'checkout.dart';
 part 'history.dart';
 part 'my_cart.dart';
+// Belajar Checkbox, jadi kalau sudah selesai silakan dihapus
+part 'checkbox_tutorial.dart';
+part 'checkbox_tutorial2.dart';

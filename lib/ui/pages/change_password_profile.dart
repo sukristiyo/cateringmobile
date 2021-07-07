@@ -19,110 +19,120 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return GeneralPage(
-      title: 'Change Password',
-      subtitle: "Fill your current and new password",
-      onBackButtonPressed: () {
-        Navigator.pop(context);
+    // Penambahan onTap pada General Page.
+    //sehingga, ketika kita menekan area selain textfield, maka keyboard akan kembali menutup
+    return GestureDetector(
+      onTap: () {
+        FocusScope.of(context).unfocus();
       },
-      child: Form(
-        key: _formKey,
-        child: Column(
-          children: [
-            Container(margin: EdgeInsets.all(8)),
-            Container(
-              width: double.infinity,
-              margin: EdgeInsets.symmetric(horizontal: defaultMargin),
-              padding: EdgeInsets.symmetric(horizontal: 10),
-              child: TextField(
-                controller: txtoldpass,
-                obscureText: true,
-                decoration: InputDecoration(
-                  border: InputBorder.none,
-                  fillColor: Colors.white,
-                  filled: true,
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(8)),
-                    borderSide: BorderSide(color: Colors.blueAccent, width: 2),
+      child: GeneralPage(
+        title: 'Change Password',
+        subtitle: "Fill your current and new password",
+        onBackButtonPressed: () {
+          Navigator.pop(context);
+        },
+        child: Form(
+          key: _formKey,
+          child: Column(
+            children: [
+              Container(margin: EdgeInsets.all(8)),
+              Container(
+                width: double.infinity,
+                margin: EdgeInsets.symmetric(horizontal: defaultMargin),
+                padding: EdgeInsets.symmetric(horizontal: 10),
+                child: TextField(
+                  controller: txtoldpass,
+                  obscureText: true,
+                  decoration: InputDecoration(
+                    border: InputBorder.none,
+                    fillColor: Colors.white,
+                    filled: true,
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(8)),
+                      borderSide:
+                          BorderSide(color: Colors.blueAccent, width: 2),
+                    ),
+                    hintText: "Type current password",
+                    prefixIcon: Icon(Icons.vpn_key),
                   ),
-                  hintText: "Type current password",
-                  prefixIcon: Icon(Icons.vpn_key),
-                ),
-                style: TextStyle(color: Colors.black87),
-              ),
-            ),
-            Container(
-              width: double.infinity,
-              margin: EdgeInsets.fromLTRB(defaultMargin, 5, defaultMargin, 5),
-            ),
-            Container(
-              width: double.infinity,
-              margin: EdgeInsets.symmetric(horizontal: defaultMargin),
-              padding: EdgeInsets.symmetric(horizontal: 10),
-              child: TextField(
-                controller: txtnewpass,
-                obscureText: true,
-                decoration: InputDecoration(
-                  border: InputBorder.none,
-                  fillColor: Colors.white,
-                  filled: true,
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(8)),
-                    borderSide: BorderSide(color: Colors.blueAccent, width: 2),
-                  ),
-                  hintText: "Type New Password",
-                  prefixIcon: Icon(Icons.lock),
-                ),
-                style: TextStyle(color: Colors.black87),
-              ),
-            ),
-            Container(
-              width: double.infinity,
-              margin: EdgeInsets.fromLTRB(defaultMargin, 5, defaultMargin, 5),
-            ),
-            Container(
-              width: double.infinity,
-              margin: EdgeInsets.symmetric(horizontal: defaultMargin),
-              padding: EdgeInsets.symmetric(horizontal: 10),
-              child: TextField(
-                controller: txtrepass,
-                obscureText: true,
-                decoration: InputDecoration(
-                  border: InputBorder.none,
-                  fillColor: Colors.white,
-                  filled: true,
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(8)),
-                    borderSide: BorderSide(color: Colors.blueAccent, width: 2),
-                  ),
-                  hintText: "Re-type New Password",
-                  prefixIcon: Icon(Icons.lock),
-                ),
-                style: TextStyle(color: Colors.black87),
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.only(
-                  top: 24, left: defaultMargin, right: defaultMargin),
-              padding: EdgeInsets.symmetric(horizontal: defaultMargin),
-              child: ButtonTheme(
-                buttonColor: mainColor,
-                minWidth: double.infinity,
-                height: 45,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(22),
-                ),
-                child: RaisedButton(
-                  padding: EdgeInsets.symmetric(horizontal: 10),
-                  onPressed: () => changePasswd(),
-                  child: Text(
-                    "APPLY",
-                    style: TextStyle(color: Colors.white, fontSize: 18.0),
-                  ),
+                  style: TextStyle(color: Colors.black87),
                 ),
               ),
-            ),
-          ],
+              Container(
+                width: double.infinity,
+                margin: EdgeInsets.fromLTRB(defaultMargin, 5, defaultMargin, 5),
+              ),
+              Container(
+                width: double.infinity,
+                margin: EdgeInsets.symmetric(horizontal: defaultMargin),
+                padding: EdgeInsets.symmetric(horizontal: 10),
+                child: TextField(
+                  controller: txtnewpass,
+                  obscureText: true,
+                  decoration: InputDecoration(
+                    border: InputBorder.none,
+                    fillColor: Colors.white,
+                    filled: true,
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(8)),
+                      borderSide:
+                          BorderSide(color: Colors.blueAccent, width: 2),
+                    ),
+                    hintText: "Type New Password",
+                    prefixIcon: Icon(Icons.lock),
+                  ),
+                  style: TextStyle(color: Colors.black87),
+                ),
+              ),
+              Container(
+                width: double.infinity,
+                margin: EdgeInsets.fromLTRB(defaultMargin, 5, defaultMargin, 5),
+              ),
+              Container(
+                width: double.infinity,
+                margin: EdgeInsets.symmetric(horizontal: defaultMargin),
+                padding: EdgeInsets.symmetric(horizontal: 10),
+                child: TextField(
+                  controller: txtrepass,
+                  obscureText: true,
+                  decoration: InputDecoration(
+                    border: InputBorder.none,
+                    fillColor: Colors.white,
+                    filled: true,
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(8)),
+                      borderSide:
+                          BorderSide(color: Colors.blueAccent, width: 2),
+                    ),
+                    hintText: "Re-type New Password",
+                    prefixIcon: Icon(Icons.lock),
+                  ),
+                  style: TextStyle(color: Colors.black87),
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(
+                    top: 24, left: defaultMargin, right: defaultMargin),
+                padding: EdgeInsets.symmetric(horizontal: defaultMargin),
+                child: ButtonTheme(
+                  buttonColor: mainColor,
+                  minWidth: double.infinity,
+                  height: 45,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(22),
+                  ),
+                  child: RaisedButton(
+                    padding: EdgeInsets.symmetric(horizontal: 10),
+                    onPressed: () => changePasswd(),
+                    child: Text(
+                      "APPLY",
+                      style: TextStyle(color: Colors.white, fontSize: 18.0),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -217,5 +227,4 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
           );
         });
   }
-  
 }

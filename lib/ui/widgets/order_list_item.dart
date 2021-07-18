@@ -36,7 +36,7 @@ class OrderListItem extends StatelessWidget {
                     NumberFormat.currency(
                             symbol: 'IDR ', decimalDigits: 0, locale: 'id-ID')
                         .format(transaction.total),
-                style: whiteFontStyle.copyWith(fontSize: 13),
+                style: greyFontStyle.copyWith(fontSize: 13),
               )
             ],
           ),
@@ -48,7 +48,7 @@ class OrderListItem extends StatelessWidget {
             children: [
               Text(
                 convertDateTime(transaction.dateTime),
-                style: whiteFontStyle.copyWith(fontSize: 12),
+                style: greyFontStyle.copyWith(fontSize: 12),
               ),
               (transaction.status == TransactionStatus.cancelled)
                   ? Text(

@@ -9,7 +9,7 @@ class GeneralPage extends StatelessWidget {
 
   GeneralPage(
       {this.title = "Title",
-      this.subtitle = "subtittle",
+      this.subtitle = "subtitle",
       this.onBackButtonPressed,
       this.child,
       this.backColor});
@@ -19,12 +19,10 @@ class GeneralPage extends StatelessWidget {
     return Scaffold(
         body: Stack(
       children: [
-        Container(
-          color: Colors.white,
-        ),
+        Container(color: Colors.white),
         SafeArea(
             child: Container(
-          color: backColor ?? whiteColor,
+          color: backColor ?? Colors.white,
         )),
         SafeArea(
           child: ListView(
@@ -32,11 +30,10 @@ class GeneralPage extends StatelessWidget {
               Column(
                 children: [
                   Container(
-                    // margin: EdgeInsets.only(bottom: defaultMargin),
                     padding: EdgeInsets.symmetric(horizontal: defaultMargin),
                     width: double.infinity,
                     height: 100,
-                    color: Colors.yellow[700],
+                    color: mainColor,
                     child: Row(
                       children: [
                         onBackButtonPressed != null
@@ -69,9 +66,9 @@ class GeneralPage extends StatelessWidget {
                             Text(
                               subtitle,
                               style: GoogleFonts.poppins(
-                                  color: blackColor,
-                                  fontWeight: FontWeight.w500),
-                            ),
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w300),
+                            )
                           ],
                         )
                       ],
@@ -80,7 +77,8 @@ class GeneralPage extends StatelessWidget {
                   Container(
                     height: defaultMargin,
                     width: double.infinity,
-                    color: whiteColor,
+                    color: Colors.white,
+                    // color: "FAFAFC".toColor(),
                   ),
                   child ?? SizedBox()
                 ],

@@ -1,142 +1,14 @@
 part of 'pages.dart';
 
 class SignInPage extends StatefulWidget {
-  static String tag = 'UserLogin';
-
   @override
   _SignInPageState createState() => _SignInPageState();
 }
 
 class _SignInPageState extends State<SignInPage> {
-  bool isAuth = false;
-  var emailController = new TextEditingController();
-  var passwordController = new TextEditingController();
-
-  UserLoginModel userLoginModel = new UserLoginModel();
-  ApiResponse apiResponse;
-
-  String uid;
-
-  @override
-  void initState() {
-    super.initState();
-  }
-
-  void authentication() {
-    setState(() {
-      isAuth = true;
-    });
-    UserLoginModel userLoginModel = new UserLoginModel(
-      email: emailController.text,
-      password: passwordController.text,
-    );
-
-    var requestBody = jsonEncode(userLoginModel.toJson());
-    UserLoginServices.authentication(requestBody).then((value) {
-      final result = value;
-      if (result.success == true && result.code == 200) {
-        userLoginModel = UserLoginModel.fromJson(result.content);
-        uid = userLoginModel.id.toString();
-        print(uid);
-        _storeUserData();
-        emailController.text = "";
-        passwordController.text = "";
-        _successDialog();
-      } else {
-        _showMyDialog();
-      }
-      setState(() {
-        isAuth = false;
-      });
-    }).catchError((error) {
-      setState(() {
-        isAuth = false;
-      });
-      print(error.toString());
-      // String err = error.toString();
-    });
-  }
-
-  Future<void> _successDialog() async {
-    return showDialog<void>(
-        context: context,
-        barrierDismissible: false, // user must tap button
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: Text("Login Success"),
-            content: SingleChildScrollView(
-              child: ListBody(
-                children: <Widget>[
-                  Text("Welcome to the System!"),
-                  Text("Lets Start!"),
-                  Text(uid),
-                ],
-              ),
-            ),
-            actions: <Widget>[
-              TextButton(
-                child: Text("OK"),
-                onPressed: () {
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(builder: (context) => HomePage()),
-                  );
-                },
-              ),
-            ],
-          );
-        });
-  }
-
-  Future<void> _showMyDialog() async {
-    return showDialog<void>(
-      context: context,
-      barrierDismissible: false, // user must tap button!
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text('User Warning'),
-          content: SingleChildScrollView(
-            child: ListBody(
-              children: <Widget>[
-                Text('Your email or password is invalid.'),
-                Text('Please try again !!!'),
-              ],
-            ),
-          ),
-          actions: <Widget>[
-            TextButton(
-              child: Text('Close'),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
-        );
-      },
-    );
-  }
-
-  // void _storeLoginData(String email) async {
-  //   final storage = FlutterSecureStorage();
-  //   await storage.write(key: Constanta.keyEmail, value: email);
-  // }
-  void sendRequestGetDataUserLogin() {
-    UserLoginModel userLoginModel = new UserLoginModel();
-    var requestBody = jsonEncode(userLoginModel.toJson());
-    UserLoginServices.getUserLogin(requestBody).then((value) {
-      final result = value;
-      if (result.success == true && result.code == 200) {
-      } else {}
-    }).catchError((error) {
-      String err = error.toString();
-    });
-  }
-
-  void _storeUserData() async {
-    final storage = FlutterSecureStorage();
-    await storage.write(key: Constanta.keyUserId, value: uid);
-    print(uid);
-  }
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  bool isLoading = false;
 
   @override
   Widget build(BuildContext context) {
@@ -162,11 +34,9 @@ class _SignInPageState extends State<SignInPage> {
                 border: Border.all(color: mainColor)),
             child: TextField(
               controller: emailController,
-              style: TextStyle(color: Colors.black),
               decoration: InputDecoration(
                   border: InputBorder.none,
-                  prefixIcon: Icon(Icons.email, color: Colors.black),
-                  hintStyle: blackFontStyle3,
+                  hintStyle: blackFontStyle4,
                   hintText: 'Type your email address'),
             ),
           ),
@@ -188,13 +58,10 @@ class _SignInPageState extends State<SignInPage> {
             child: TextField(
               obscureText: true,
               controller: passwordController,
-              style: TextStyle(color: Colors.black),
               decoration: InputDecoration(
-                border: InputBorder.none,
-                prefixIcon: Icon(Icons.lock, color: Colors.black),
-                hintText: 'Type your password',
-                hintStyle: blackFontStyle3,
-              ),
+                  border: InputBorder.none,
+                  hintStyle: blackFontStyle4,
+                  hintText: 'Type your password'),
             ),
           ),
           Container(
@@ -214,7 +81,7 @@ class _SignInPageState extends State<SignInPage> {
               elevation: 0,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8)),
-              color: whiteColor,
+              color: Colors.white,
               child: Text(
                 'Forgot Password?',
                 style: GoogleFonts.poppins(
@@ -224,14 +91,46 @@ class _SignInPageState extends State<SignInPage> {
           ),
           Container(
             width: double.infinity,
-            margin: EdgeInsets.only(top: 5),
+            margin: EdgeInsets.only(top: 10),
             height: 45,
             padding: EdgeInsets.symmetric(horizontal: defaultMargin),
-            child: isAuth
-                ? CircularProgressIndicator()
+            child: isLoading
+                ? loadingIndicator
                 : RaisedButton(
-                    onPressed: () {
-                      authentication();
+                    onPressed: () async {
+                      setState(() {
+                        isLoading = true;
+                      });
+
+                      await context.bloc<UserCubit>().signIn(
+                          emailController.text, passwordController.text);
+                      UserState state = context.bloc<UserCubit>().state;
+
+                      if (state is UserLoaded) {
+                        context.bloc<FoodCubit>().getFoods();
+                        context.bloc<TransactionCubit>().getTransactions();
+                        Get.to(MainPage());
+                      } else {
+                        Get.snackbar("", "",
+                            backgroundColor: "D9435E".toColor(),
+                            icon: Icon(
+                              MdiIcons.closeCircleOutline,
+                              color: Colors.white,
+                            ),
+                            titleText: Text(
+                              "Sign In Failed",
+                              style: GoogleFonts.poppins(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w600),
+                            ),
+                            messageText: Text(
+                              (state as UserLoadingFailed).message,
+                              style: GoogleFonts.poppins(color: Colors.white),
+                            ));
+                        setState(() {
+                          isLoading = false;
+                        });
+                      }
                     },
                     elevation: 0,
                     shape: RoundedRectangleBorder(
@@ -249,27 +148,26 @@ class _SignInPageState extends State<SignInPage> {
             margin: EdgeInsets.only(top: 24),
             height: 45,
             padding: EdgeInsets.symmetric(horizontal: defaultMargin),
-            child:
-                //  isLoading
-                //      ? SpinKitFadingCircle(
-                //          size: 45,
-                //          color: whiteColor,
-                //        ) :
-                RaisedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/sign_up_page');
-              },
-              elevation: 0,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8)),
-              color: purpleColor,
-              child: Text(
-                'Create To Account',
-                style: GoogleFonts.poppins(
-                    color: Colors.white, fontWeight: FontWeight.w500),
-              ),
-            ),
-          ),
+            child: isLoading
+                ? SpinKitFadingCircle(
+                    size: 45,
+                    color: mainColor,
+                  )
+                : RaisedButton(
+                    onPressed: () {
+                      Get.to(SignUpPage());
+                    },
+                    elevation: 0,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8)),
+                    color: purpleColor,
+                    child: Text(
+                      'Create New Account',
+                      style: GoogleFonts.poppins(
+                          color: Colors.white, fontWeight: FontWeight.w500),
+                    ),
+                  ),
+          )
         ],
       ),
     );

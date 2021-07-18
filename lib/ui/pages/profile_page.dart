@@ -7,22 +7,11 @@ class ProfilePage extends StatefulWidget {
 
 class _ProfilePageState extends State<ProfilePage> {
   int selectedIndex = 0;
-
-  UserLoginModel userLoginModel = new UserLoginModel();
-  String userId = "0";
-  bool isLoading = true;
-  bool isAuth = false;
-
-  @override
-  void initState() {
-    readUserData();
-    super.initState();
-  }
+  File pictureFile;
 
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
-    return isLoading ? CircularProgressIndicator() : ListView(
+    return ListView(
       children: [
         Column(
           children: [
@@ -32,12 +21,20 @@ class _ProfilePageState extends State<ProfilePage> {
                 height: 220,
                 margin: EdgeInsets.only(bottom: defaultMargin),
                 width: double.infinity,
-                decoration: BoxDecoration(borderRadius: BorderRadius.vertical(bottom: Radius.circular(20)),
-                color: mainColor),
+                color: Colors.white,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Container(
+                    GestureDetector(
+            onTap: () async {
+              PickedFile pickedFile =
+                  await ImagePicker().getImage(source: ImageSource.gallery);
+              if (pickedFile != null) {
+                pictureFile = File(pickedFile.path);
+                setState(() {});
+              }
+            },
+                    child: Container(
                       width: 110,
                       height: 110,
                       margin: EdgeInsets.only(bottom: 16),
@@ -45,23 +42,31 @@ class _ProfilePageState extends State<ProfilePage> {
                       decoration: BoxDecoration(
                           image: DecorationImage(
                               image: AssetImage('assets/photo_border.png'))),
-                      child: Container(
+                  child: Container(
                         decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             image: DecorationImage(
-                                image: NetworkImage(mockUser.picturePath),
+                                image: NetworkImage((context
+                                        .bloc<UserCubit>()
+                                        .state as UserLoaded)
+                                    .user
+                                    .picturePath),
                                 fit: BoxFit.cover)),
+                  )
+          
                       ),
                     ),
                     Text(
-                      userLoginModel.name,
+                      (context.bloc<UserCubit>().state as UserLoaded).user.name,
                       style: GoogleFonts.poppins(
                           fontSize: 18, fontWeight: FontWeight.w500),
                     ),
                     Text(
-                      userLoginModel.email,
-                      style: GoogleFonts.poppins(
-                          fontSize: 18, fontWeight: FontWeight.w300),
+                      (context.bloc<UserCubit>().state as UserLoaded)
+                          .user
+                          .email,
+                      style:
+                          greyFontStyle.copyWith(fontWeight: FontWeight.w300),
                     )
                   ],
                 )),
@@ -71,70 +76,57 @@ class _ProfilePageState extends State<ProfilePage> {
               color: Colors.white,
               child: Column(
                 children: [
-                  // CustomTabBar(
-                  //   titles: ["Account"],
-                  //   selectedIndex: selectedIndex,
-                  //   onTap: (index) {
-                  //     setState(() {
-                  //       selectedIndex = index;
-                  //     });
-                  //   },
-                  // ),
-                  // SizedBox(
-                  //   height: 12,
-                  // ),
-                  Container(
-            width: double.infinity,
-            margin: EdgeInsets.only(top: 5),
-            height: 45,
-            padding: EdgeInsets.symmetric(horizontal: defaultMargin),
-            child: isAuth
-                ? CircularProgressIndicator()
-                : RaisedButton(
-                  onPressed: () {
-                      Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) =>
-                          ChangeProfileScreen(userLoginModel: userLoginModel))
-                  );
+                  CustomTabBar(
+                    titles: ["Account", "Kuke"],
+                    selectedIndex: selectedIndex,
+                    onTap: (index) {
+                      setState(() {
+                        selectedIndex = index;
+                      });
                     },
-                    elevation: 0,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8)),
-                    color: mainColor,
-                    child: Text(
-                      'Change Profile',
-                      style: GoogleFonts.poppins(
-                          color: Colors.black, fontWeight: FontWeight.w500),
-                    ),
                   ),
-          ),
-          Container(
-            width: double.infinity,
-            margin: EdgeInsets.only(top: 5),
-            height: 45,
-            padding: EdgeInsets.symmetric(horizontal: defaultMargin),
-            child: isAuth
-                ? CircularProgressIndicator()
-                : RaisedButton(
-                    onPressed: () {
-                      Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) =>
-                          ChangePasswordScreen(userLoginModel: userLoginModel))
-                  );
-                    },
-                    elevation: 0,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8)),
-                    color: mainColor,
-                    child: Text(
-                      'Change Password',
-                      style: GoogleFonts.poppins(
-                          color: Colors.black, fontWeight: FontWeight.w500),
-                    ),
+                  SizedBox(
+                    height: 16,
                   ),
-          ),
+                  Column(
+                    children: ((selectedIndex == 0)
+                            ? [
+                                'Edit Profile',
+                                'Home Address',
+                                'Security',
+                              ]
+                            : [
+                                'Rate App',
+                                'Help Center',
+                                'Privacy & Policy',
+                                'Term & Condition'
+                              ])
+                        .map((e) => Padding(
+                              padding: EdgeInsets.only(
+                                  bottom: 16,
+                                  left: defaultMargin,
+                                  right: defaultMargin),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    e,
+                                    style: blackFontStyle3,
+                                  ),
+                                  SizedBox(
+                                    height: 24,
+                                    width: 24,
+                                    child: Image.asset(
+                                      'assets/right_arrow.png',
+                                      fit: BoxFit.contain,
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ))
+                        .toList(),
+                  )
                 ],
               ),
             ),
@@ -145,36 +137,5 @@ class _ProfilePageState extends State<ProfilePage> {
         ),
       ],
     );
-  }
-
-  void readUserData() async {
-    final storage = FlutterSecureStorage();
-    userId = await storage.read(key: Constanta.keyUserId);
-    getDataUserLogin();
-  }
-
-  void getDataUserLogin() {
-    setState(() {
-      isLoading = true;
-    });
-    Map map = {
-      "id": userId,
-    };
-    
-    var requestBody = jsonEncode(map);
-    UserLoginServices.getUserLogin(requestBody).then((value) {
-      //Decode response
-      final result = value;
-      //check status
-      if (result.success == true && result.code == 200) {
-        //parse model and return value
-        userLoginModel = UserLoginModel.fromJson(result.content);
-        setState(() {
-          isLoading = false;
-        });
-      } else {
-        print(userId);
-      }
-    });
   }
 }

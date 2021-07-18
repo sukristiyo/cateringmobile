@@ -1,4 +1,4 @@
-name: catering
+name: kukeapp
 description: A new Flutter project.
 
 # The following line prevents the package from being accidentally published to
@@ -23,17 +23,21 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  cupertino_icons: ^1.0.0
+
+  # The following adds the Cupertino Icons font to your application.
+  # Use with the CupertinoIcons class for iOS style icons.
+  cupertino_icons: ^0.1.3
   flutter_bloc: ^6.0.1
-  flutter_spinkit: ^4.1.2+1
   google_fonts: ^1.1.0
   supercharged: ^1.10.0
-  http: ^0.12.0+2
+  flutter_spinkit: ^4.1.2+1
   get: ^3.4.6
-  flutter_secure_storage: ^3.3.3
   material_design_icons_flutter: ^4.0.5555
-  equatable: ^1.2.4
   intl: ^0.16.1
+  equatable: ^1.2.4
+  http: ^0.12.2
+  image_picker: ^0.6.7+11
+  url_launcher: ^5.7.2
 
 dev_dependencies:
   flutter_test:
@@ -47,7 +51,6 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
-
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/

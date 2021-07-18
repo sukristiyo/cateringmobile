@@ -16,7 +16,7 @@ class CustomTabBar extends StatelessWidget {
           Container(
             margin: EdgeInsets.only(top: 48),
             height: 1,
-            color: "FFC700".toColor(),
+            color: "F2F2F2".toColor(),
           ),
           Row(
             children: titles
@@ -36,7 +36,7 @@ class CustomTabBar extends StatelessWidget {
                               style: (titles.indexOf(e) == selectedIndex)
                                   ? blackFontStyle3.copyWith(
                                       fontWeight: FontWeight.w500)
-                                  : blackFontStyle,
+                                  : greyFontStyle,
                             ),
                           ),
                           Container(
@@ -46,7 +46,7 @@ class CustomTabBar extends StatelessWidget {
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(1.5),
                                 color: (titles.indexOf(e) == selectedIndex)
-                                    ? "FFC700".toColor()
+                                    ? "020202".toColor()
                                     : Colors.transparent),
                           )
                         ],

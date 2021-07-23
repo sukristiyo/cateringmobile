@@ -32,6 +32,7 @@ class Ecatering extends StatelessWidget {
           '/my_cart': (BuildContext context) => MyCart(),
           '/checkbox_tutorial': (BuildContext context) => CheckBoxTutorial(),
           '/checkbox_tutorial2': (BuildContext context) => CheckBoxTutorial2(),
+          '/add_menu': (BuildContext context) => AddMenu(),
         });
   }
 }

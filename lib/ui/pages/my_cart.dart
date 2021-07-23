@@ -447,6 +447,13 @@ class _MyCartState extends State<MyCart> {
                   ),
                 ],
               ),
+              ListTile(
+                onTap: () {
+                  Navigator.pushNamed(context, '/add_menu');
+                },
+                leading: Icon(Icons.menu_book),
+                title: Text('Tambah menu'),
+              ),
               Container(
                 padding: EdgeInsets.all(10),
                 decoration: BoxDecoration(

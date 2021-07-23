@@ -52,3 +52,4 @@ part 'my_cart.dart';
 // Belajar Checkbox, jadi kalau sudah selesai silakan dihapus
 part 'checkbox_tutorial.dart';
 part 'checkbox_tutorial2.dart';
+part 'add_menu.dart';

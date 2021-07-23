@@ -5,7 +5,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "food_market",
+            "name": "kukeapp",
             "request": "launch",
             "type": "dart"
         }

@@ -35,9 +35,9 @@ class _FoodPageState extends State<FoodPage> {
                         style: blackFontStyle1,
                       ),
                       Text(
-                        "Let's get some foods",
-                        style:
-                            blackFontStyle4.copyWith(fontWeight: FontWeight.w300),
+                        "Find your best ever meal",
+                        style: blackFontStyle4.copyWith(
+                            fontWeight: FontWeight.w300),
                       ),
                     ],
                   ),
@@ -117,8 +117,8 @@ class _FoodPageState extends State<FoodPage> {
                   BlocBuilder<FoodCubit, FoodState>(builder: (_, state) {
                     if (state is FoodLoaded) {
                       List<Food> foods = state.foods
-                          .where((element) => element.types.contains(
-                              (selectedIndex == 0)
+                          .where((element) =>
+                              element.types.contains((selectedIndex == 0)
                                   ? FoodType.new_food
                                   : (selectedIndex == 1)
                                       ? FoodType.popular

@@ -19,9 +19,12 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (_) => TransactionCubit())
       ],
       child: GetMaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: SignInPage(),
-      ),
+          debugShowCheckedModeBanner: false,
+          home: SplashScreen(),
+          routes: <String, WidgetBuilder>{
+            '/sign_in_page': (BuildContext context) => SignInPage(),
+            '/forgot_page': (BuildContext context) => ForgotPassword(),
+          }),
     );
   }
 }

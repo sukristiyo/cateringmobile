@@ -14,7 +14,7 @@ class _SignInPageState extends State<SignInPage> {
   Widget build(BuildContext context) {
     return GeneralPage(
       title: 'Sign In',
-      subtitle: "Find your best ever meal",
+      subtitle: "Please Login",
       child: Column(
         children: [
           Container(

@@ -38,7 +38,7 @@ class _OrderHistoryPageState extends State<OrderHistoryPage> {
                       width: double.infinity,
                       margin: EdgeInsets.only(bottom: defaultMargin),
                       padding: EdgeInsets.symmetric(horizontal: defaultMargin),
-                      color: Colors.white,
+                      color: mainColor,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -47,11 +47,11 @@ class _OrderHistoryPageState extends State<OrderHistoryPage> {
                             'Your Orders',
                             style: blackFontStyle1,
                           ),
-                          Text(
-                            'Wait for the best meal',
-                            style: greyFontStyle.copyWith(
-                                fontWeight: FontWeight.w300),
-                          )
+                          // Text(
+                          //   'Wait for the best meal',
+                          //   style: blackFontStyle4.copyWith(
+                          //       fontWeight: FontWeight.w300),
+                          // )
                         ],
                       ),
                     ),

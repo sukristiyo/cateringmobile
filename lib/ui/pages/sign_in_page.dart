@@ -68,26 +68,25 @@ class _SignInPageState extends State<SignInPage> {
             margin: EdgeInsets.only(top: 1),
             alignment: FractionalOffset.bottomRight,
             padding: EdgeInsets.symmetric(horizontal: defaultMargin),
-            child:
-                // isLoading
-                //     ? SpinKitFadingCircle(
-                //         size: 45,
-                //         color: mainColor,
-                //       ) :
-                RaisedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/forgot_page');
-              },
-              elevation: 0,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8)),
-              color: Colors.white,
-              child: Text(
-                'Forgot Password?',
-                style: GoogleFonts.poppins(
-                    color: Colors.black, fontWeight: FontWeight.w500),
-              ),
-            ),
+            child: isLoading
+                ? SpinKitFadingCircle(
+                    size: 45,
+                    color: mainColor,
+                  )
+                : RaisedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/forgot_page');
+                    },
+                    elevation: 0,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8)),
+                    color: Colors.white,
+                    child: Text(
+                      'Forgot Password?',
+                      style: GoogleFonts.poppins(
+                          color: Colors.black, fontWeight: FontWeight.w500),
+                    ),
+                  ),
           ),
           Container(
             width: double.infinity,

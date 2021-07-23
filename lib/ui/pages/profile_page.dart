@@ -21,40 +21,39 @@ class _ProfilePageState extends State<ProfilePage> {
                 height: 220,
                 margin: EdgeInsets.only(bottom: defaultMargin),
                 width: double.infinity,
-                color: Colors.white,
+                color: mainColor,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     GestureDetector(
-            onTap: () async {
-              PickedFile pickedFile =
-                  await ImagePicker().getImage(source: ImageSource.gallery);
-              if (pickedFile != null) {
-                pictureFile = File(pickedFile.path);
-                setState(() {});
-              }
-            },
-                    child: Container(
-                      width: 110,
-                      height: 110,
-                      margin: EdgeInsets.only(bottom: 16),
-                      padding: EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                          image: DecorationImage(
-                              image: AssetImage('assets/photo_border.png'))),
-                  child: Container(
-                        decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            image: DecorationImage(
-                                image: NetworkImage((context
-                                        .bloc<UserCubit>()
-                                        .state as UserLoaded)
-                                    .user
-                                    .picturePath),
-                                fit: BoxFit.cover)),
-                  )
-          
-                      ),
+                      onTap: () async {
+                        PickedFile pickedFile = await ImagePicker()
+                            .getImage(source: ImageSource.gallery);
+                        if (pickedFile != null) {
+                          pictureFile = File(pickedFile.path);
+                          setState(() {});
+                        }
+                      },
+                      child: Container(
+                          width: 110,
+                          height: 110,
+                          margin: EdgeInsets.only(bottom: 16),
+                          padding: EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  image:
+                                      AssetImage('assets/photo_border.png'))),
+                          child: Container(
+                            decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                image: DecorationImage(
+                                    image: NetworkImage((context
+                                            .bloc<UserCubit>()
+                                            .state as UserLoaded)
+                                        .user
+                                        .picturePath),
+                                    fit: BoxFit.cover)),
+                          )),
                     ),
                     Text(
                       (context.bloc<UserCubit>().state as UserLoaded).user.name,
@@ -66,7 +65,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           .user
                           .email,
                       style:
-                          greyFontStyle.copyWith(fontWeight: FontWeight.w300),
+                          blackFontStyle4.copyWith(fontWeight: FontWeight.w300),
                     )
                   ],
                 )),

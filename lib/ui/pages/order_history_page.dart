@@ -47,11 +47,11 @@ class _OrderHistoryPageState extends State<OrderHistoryPage> {
                             'Your Orders',
                             style: blackFontStyle1,
                           ),
-                          // Text(
-                          //   'Wait for the best meal',
-                          //   style: blackFontStyle4.copyWith(
-                          //       fontWeight: FontWeight.w300),
-                          // )
+                          Text(
+                            'please continue your payment',
+                            style: blackFontStyle4.copyWith(
+                                fontWeight: FontWeight.w100, fontSize: 12),
+                          )
                         ],
                       ),
                     ),

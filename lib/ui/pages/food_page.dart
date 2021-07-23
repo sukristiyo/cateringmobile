@@ -37,7 +37,7 @@ class _FoodPageState extends State<FoodPage> {
                       Text(
                         "Find your best ever meal",
                         style: blackFontStyle4.copyWith(
-                            fontWeight: FontWeight.w300),
+                            fontWeight: FontWeight.w300, fontSize: 12),
                       ),
                     ],
                   ),

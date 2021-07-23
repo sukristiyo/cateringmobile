@@ -64,8 +64,8 @@ class _ProfilePageState extends State<ProfilePage> {
                       (context.bloc<UserCubit>().state as UserLoaded)
                           .user
                           .email,
-                      style:
-                          blackFontStyle4.copyWith(fontWeight: FontWeight.w300),
+                      style: blackFontStyle4.copyWith(
+                          fontWeight: FontWeight.w300, fontSize: 12),
                     )
                   ],
                 )),

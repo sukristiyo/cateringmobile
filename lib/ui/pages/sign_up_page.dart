@@ -17,7 +17,7 @@ class _SignUpPageState extends State<SignUpPage> {
   Widget build(BuildContext context) {
     return GeneralPage(
       title: 'Sign Up',
-      subtitle: "Register and eat",
+      subtitle: "Register KukeApp",
       onBackButtonPressed: () {
         Get.back();
       },
@@ -71,12 +71,12 @@ class _SignUpPageState extends State<SignUpPage> {
             padding: EdgeInsets.symmetric(horizontal: 10),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
-                border: Border.all(color: Colors.black)),
+                border: Border.all(color: mainColor)),
             child: TextField(
               controller: nameController,
               decoration: InputDecoration(
                   border: InputBorder.none,
-                  hintStyle: greyFontStyle,
+                  hintStyle: blackFontStyle4,
                   hintText: 'Type your full name'),
             ),
           ),
@@ -94,12 +94,12 @@ class _SignUpPageState extends State<SignUpPage> {
             padding: EdgeInsets.symmetric(horizontal: 10),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
-                border: Border.all(color: Colors.black)),
+                border: Border.all(color: mainColor)),
             child: TextField(
               controller: emailController,
               decoration: InputDecoration(
                   border: InputBorder.none,
-                  hintStyle: greyFontStyle,
+                  hintStyle: blackFontStyle4,
                   hintText: 'Type your email address'),
             ),
           ),
@@ -117,14 +117,20 @@ class _SignUpPageState extends State<SignUpPage> {
             padding: EdgeInsets.symmetric(horizontal: 10),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
-                border: Border.all(color: Colors.black)),
+                border: Border.all(color: mainColor)),
             child: TextField(
               obscureText: true,
               controller: passwordController,
               decoration: InputDecoration(
                   border: InputBorder.none,
-                  hintStyle: greyFontStyle,
-                  hintText: 'Type your password'),
+                  hintStyle: blackFontStyle4,
+                  hintText: 'Type your password '),
+            ),
+          ),
+          Container(
+            child: Text(
+              "The password must be at least 8 characters.",
+              style: greyFontStyle2,
             ),
           ),
           Container(

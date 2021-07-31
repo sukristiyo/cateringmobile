@@ -23,7 +23,7 @@ class _AddressPageState extends State<AddressPage> {
   void initState() {
     super.initState();
 
-    cities = ['Bandung', 'Jakarta', 'Surabaya', 'Batam' , 'pekanbaru'];
+    cities = ['Batam', 'Tanjung Pinang', 'Padang', 'Yogyakarta', 'pekanbaru'];
     selectedCity = cities[0];
   }
 
@@ -51,12 +51,12 @@ class _AddressPageState extends State<AddressPage> {
             padding: EdgeInsets.symmetric(horizontal: 10),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
-                border: Border.all(color: Colors.black)),
+                border: Border.all(color: mainColor)),
             child: TextField(
               controller: phoneController,
               decoration: InputDecoration(
                   border: InputBorder.none,
-                  hintStyle: greyFontStyle,
+                  hintStyle: blackFontStyle4,
                   hintText: 'Type your phone number'),
             ),
           ),
@@ -74,12 +74,12 @@ class _AddressPageState extends State<AddressPage> {
             padding: EdgeInsets.symmetric(horizontal: 10),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
-                border: Border.all(color: Colors.black)),
+                border: Border.all(color: mainColor)),
             child: TextField(
               controller: addressController,
               decoration: InputDecoration(
                   border: InputBorder.none,
-                  hintStyle: greyFontStyle,
+                  hintStyle: blackFontStyle4,
                   hintText: 'Type your address'),
             ),
           ),
@@ -97,12 +97,12 @@ class _AddressPageState extends State<AddressPage> {
             padding: EdgeInsets.symmetric(horizontal: 10),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
-                border: Border.all(color: Colors.black)),
+                border: Border.all(color: mainColor)),
             child: TextField(
               controller: houseNumController,
               decoration: InputDecoration(
                   border: InputBorder.none,
-                  hintStyle: greyFontStyle,
+                  hintStyle: blackFontStyle4,
                   hintText: 'Type your house number'),
             ),
           ),
@@ -120,7 +120,7 @@ class _AddressPageState extends State<AddressPage> {
             padding: EdgeInsets.symmetric(horizontal: 10),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
-                border: Border.all(color: Colors.black)),
+                border: Border.all(color: mainColor)),
             child: DropdownButton(
                 value: selectedCity,
                 isExpanded: true,
@@ -130,7 +130,7 @@ class _AddressPageState extends State<AddressPage> {
                         value: e,
                         child: Text(
                           e,
-                          style: blackFontStyle3,
+                          style: blackFontStyle4,
                         )))
                     .toList(),
                 onChanged: (item) {

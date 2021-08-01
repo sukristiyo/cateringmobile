@@ -13,13 +13,18 @@ class _OrderHistoryPageState extends State<OrderHistoryPage> {
     return BlocBuilder<TransactionCubit, TransactionState>(builder: (_, state) {
       if (state is TransactionLoaded) {
         if (state.transactions.length == 0) {
+          
+          
           return IllustrationPage(
+          
+            
             title: 'Ouch! Hungry',
             subtitle: 'Seems you like have not\nordered any food yet',
             picturePath: 'assets/love_burger.png',
-            buttonTap1: () {},
+            buttonTap1: () {Get.offAll(MainPage());},
             buttonTitle1: 'Find Foods',
           );
+          
         } else {
           double listItemWidth =
               MediaQuery.of(context).size.width - 2 * defaultMargin;
@@ -28,6 +33,8 @@ class _OrderHistoryPageState extends State<OrderHistoryPage> {
             onRefresh: () async {
               await context.bloc<TransactionCubit>().getTransactions();
             },
+            backgroundColor: mainColor,
+            
             child: ListView(
               children: [
                 Column(
